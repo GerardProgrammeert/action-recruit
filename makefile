@@ -1,4 +1,4 @@
-project = template # change this for your project name
+project = action-recruit# change this for your project name
 
 in:
 	docker exec -it "$(project)-php-fpm-1" /bin/bash
@@ -24,6 +24,12 @@ install-laravel:
 
 laravel-chmod:
 	@chmod o+w ./storage/ -R
+
+composer-insta: in
+	composer install
+
+env:
+	cp .env.example .env
 
 git-rm-untracked:
 	git clean -fd
