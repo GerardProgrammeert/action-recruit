@@ -18,7 +18,7 @@ tail:
 	@docker compose logs --follow
 
 install-laravel:
-	composer create-project laravel/laravel
+	composer create-project --prefer-dist laravel/laravel:^11.0
 	mv laravel/* laravel/.* .
 	rm -d laravel
 
