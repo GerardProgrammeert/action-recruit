@@ -17,3 +17,4 @@
 - [ ] Make seperate response class
 - [ ] Use builder pattern for creating a Guzzle Client
 - [ ] Make a Fake Client
+- [ ] Integrate [Google API PHP Client](https://github.com/googleapis/google-api-php-client-services/tree/main/src)
