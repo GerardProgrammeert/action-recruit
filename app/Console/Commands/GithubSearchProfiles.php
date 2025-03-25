@@ -13,8 +13,9 @@ class GithubSearchProfiles extends Command
 
     protected $description = 'Search for user profiles on github';
 
-    public function __construct(private GitHubServices $service)
+    public function __construct(private readonly GitHubServices $service)
     {
+        parent::__construct();
     }
 
     public function handle(): void
