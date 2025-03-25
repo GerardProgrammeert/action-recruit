@@ -23,7 +23,9 @@ class ExportProfiles extends Command
         Storage::put($path, '');
         $data = Profile::query()->lazy();
         $exporter = new CSVExporter(
-            $data, Storage::path($path), function($profile) {
+            $data,
+            Storage::path($path),
+            function ($profile) {
                 return [
                     'id' => $profile->id,
                     'github_id' => $profile->github_id,
@@ -40,7 +42,8 @@ class ExportProfiles extends Command
                     'linkedin_links' => $profile->linkedin_links ? implode('|', $profile->linkedin_links) : '' ,
                     'is_fetched' => $profile->is_fetched,
                 ];
-            });
+            }
+        );
 
         $exporter->export();
     }

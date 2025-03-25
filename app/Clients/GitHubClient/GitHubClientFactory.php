@@ -50,6 +50,7 @@ class GitHubClientFactory
         $rateLimiter = app()->makeWith(RateLimiterServiceInterface::class, [
                             'key' => config('github.api_key')
                         ]);
+
         $middleware = app()->makeWith(GitHubHeaderRateLimiterMiddleware::class, ['rateLimiter' => $rateLimiter]);
         $stack->push($middleware);
 

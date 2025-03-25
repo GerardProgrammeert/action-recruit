@@ -18,7 +18,7 @@ class GutHubGetUser extends Command
     {
         $profiles = Profile::query()
             ->where('is_fetched', false)
-            ->where('type','=', 'User')
+            ->where('type', '=', 'User')
             ->take(2)->get();
 
         $profiles->each(function (Profile $profile) {

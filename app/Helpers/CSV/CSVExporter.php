@@ -16,8 +16,7 @@ class CSVExporter
         private readonly iterable $data,
         private readonly string $path,
         private readonly ?Closure $transformer = null
-    )
-    {
+    ) {
     }
 
     public function export(): void
@@ -28,7 +27,7 @@ class CSVExporter
                 continue;
             }
             if (!$this->isHeaderSet) {
-               $this->addHeader($handle, $this->transform($row));
+                $this->addHeader($handle, $this->transform($row));
             }
             fputcsv($handle, $this->transform($row));
         }
@@ -50,7 +49,7 @@ class CSVExporter
     private function transform(mixed $row): array
     {
         if ($this->transformer) {
-           return call_user_func($this->transformer, $row);
+            return call_user_func($this->transformer, $row);
         }
 
         if ($row instanceof Model) {

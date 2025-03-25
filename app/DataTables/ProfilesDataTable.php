@@ -15,7 +15,6 @@ use Yajra\DataTables\Services\DataTable;
 
 class ProfilesDataTable extends DataTable
 {
-
     protected array $actions = ['print', 'excel', 'myCustomAction'];
 
     /**
@@ -27,44 +26,42 @@ class ProfilesDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', 'profiles.action')
-            ->addColumn('hireable', function($row) {
+            ->addColumn('hireable', function ($row) {
                 $html = '<i class="bi bi-x text-danger fs-1"></i>';
                 if ($row->hireable) {
                     $html = '<i class="bi bi-check fs-1"></i>';
                 }
                 return $html;
             })
-            ->addColumn('linkedin', function($row) {
+            ->addColumn('linkedin', function ($row) {
                 if (!$row->linkedin_links) {
-
                     return '';
                 }
 
-                return implode('<br/>',array_filter(array_map([$this, 'getFilteredLink'], $row->linkedin_links)));
+                return implode('<br/>', array_filter(array_map([$this, 'getFilteredLink'], $row->linkedin_links)));
             })
-            ->addColumn('github', function($row) {
-                if(!$row->html_url) {
-
+            ->addColumn('github', function ($row) {
+                if (!$row->html_url) {
                     return '';
                 }
 
                 return $this->getLink($row->html_url);
             })
-            ->addColumn('twitter', function($row) {
+            ->addColumn('twitter', function ($row) {
                 if (!$row->twitter_username) {
                     return '';
                 }
 
                 return $this->getLink('https://twitter.com/' . $row->twitter_username);
             })
-            ->addColumn('blog', function($row) {
+            ->addColumn('blog', function ($row) {
                 if (!$row->blog) {
                     return '';
                 }
 
                 return $this->getLink($row->blog);
             })
-            ->addColumn('action', function($row) {
+            ->addColumn('action', function ($row) {
                 return '<button class="btn btn-primary" onClick="setIsDone(' . $row->id . ')">Done</button>';
             })
             ->setRowId('id')
@@ -78,7 +75,7 @@ class ProfilesDataTable extends DataTable
     {
         return $model->newQuery()
             ->where('is_done', false)
-            ->orderBy('id','ASC');
+            ->orderBy('id', 'ASC');
     }
 
     /**
@@ -135,7 +132,6 @@ class ProfilesDataTable extends DataTable
     private function getFilteredLink(string $url): ?string
     {
         if (Str::contains($url, '/nl.', true)) {
-
             return $this->getLink($url);
         }
 

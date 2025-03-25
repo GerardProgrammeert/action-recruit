@@ -20,7 +20,7 @@ class CountRequestRateLimiter
             $this->setLimit();
         }
 
-        if (Cache::get($this->key) > 0 ) {
+        if (Cache::get($this->key) > 0) {
             return true;
         }
 

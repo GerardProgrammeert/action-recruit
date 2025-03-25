@@ -21,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropColumns('profiles','is_fetched');
+        Schema::dropColumns('profiles', 'is_fetched');
     }
 };

@@ -8,8 +8,6 @@ use App\Clients\ClientInterface;
 use App\Clients\GuzzleClient;
 use App\Helpers\RateLimitingMiddleware\CountRequestLimiter\CountRequestRateLimiter;
 use App\Helpers\RateLimitingMiddleware\CountRequestLimiter\GoogleSearchRateLimiterMiddleware;
-use App\Helpers\RateLimitingMiddleware\GoogleSearchHeaderRateLimiterMiddleware;
-use App\Helpers\RateLimitingMiddleware\RateLimitingMiddleWare;
 use App\Helpers\RateLimitingMiddleware\TimeUnit;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
@@ -34,7 +32,7 @@ class GoogleSearchClientFactory
             'base_uri' => self::BASE_URL,
             'headers'  => self::getHeaders(),
             'handler'  => self::getStack(),
-            'debug'   => true,
+            'debug'    => true,
         ];
     }
 

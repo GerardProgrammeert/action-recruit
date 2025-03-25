@@ -8,6 +8,6 @@ class GoogleSearchRateLimiterMiddleware extends AbstractCountRequestRateLimiterM
 {
     protected function getKey(): string
     {
-        return hash('sha256',config('google.api_key'));
+        return hash('sha256', config('google.api_key'));
     }
 }
