@@ -37,4 +37,16 @@ git-rm-untracked:
 	rm -rf vendor public bootstrap
 	rm -f composer.json composer.lock
 
+md:
+	./vendor/bin/phpmd app,database,routes ansi phpmd.xml
+
+stan:
+	./vendor/bin/phpstan analyse --memory-limit=500M
+
+cs-fixer:
+	 ./vendor/bin/phpcbf
+
+cs:
+	./vendor/bin/phpcs
+
 
