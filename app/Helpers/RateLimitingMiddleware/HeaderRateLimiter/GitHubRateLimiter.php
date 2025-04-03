@@ -12,8 +12,9 @@ use RuntimeException;
 
 class GitHubRateLimiter extends AbstractRateLimiter implements HeaderRateLimiterInterface
 {
+    const CACHE_KEY = 'github_rate_limiter';
+
     public function __construct(
-        private readonly string $key,
         private readonly int $maxRateLimit = 150,
     ) {
         $this->initRateLimiter();
@@ -21,14 +22,14 @@ class GitHubRateLimiter extends AbstractRateLimiter implements HeaderRateLimiter
 
     private function initRateLimiter(): void
     {
-        if(!Cache::has($this->key)) {
-            Cache::put($this->key, $this->maxRateLimit);
+        if (!Cache::has(self::CACHE_KEY)) {
+            Cache::put(self::CACHE_KEY, $this->maxRateLimit);
         }
     }
 
     public function canMakeRequest(): bool
     {
-        return Cache::get($this->key) > 0;
+        return Cache::get(self::CACHE_KEY) > 0;
     }
 
     public function updateRateLimits(ResponseInterface $response): void
@@ -47,6 +48,6 @@ class GitHubRateLimiter extends AbstractRateLimiter implements HeaderRateLimiter
 
     public function setRemainingCalls(int $limit, DateTimeInterface $expirationDate): void
     {
-        Cache::put($this->key, $limit, $expirationDate);
+        Cache::put(self::CACHE_KEY, $limit, $expirationDate);
     }
 }

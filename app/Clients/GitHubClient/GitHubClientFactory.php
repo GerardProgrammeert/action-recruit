@@ -48,8 +48,7 @@ class GitHubClientFactory
         $handler = new CurlHandler();
         $stack->setHandler($handler);
 
-        $key = config('github.api_key');
-        $rateLimiter = new GitHubRateLimiter($key);
+        $rateLimiter = new GitHubRateLimiter();
         $middleware = app()->makeWith(GitHubRateLimiterMiddleware::class, ['rateLimiter' => $rateLimiter]);
 
         $stack->push($middleware);
