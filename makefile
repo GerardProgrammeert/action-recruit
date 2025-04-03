@@ -1,7 +1,7 @@
 project = action-recruit# change this for your project name
 
 in:
-	docker exec -it "$(project)-php-fpm-1" /bin/bash
+	docker exec --user=php -it "$(project)-php-fpm-1" /bin/bash
 
 up:
 	docker-compose up -d
@@ -36,6 +36,10 @@ git-rm-untracked:
 	git clean -fx
 	rm -rf vendor public bootstrap
 	rm -f composer.json composer.lock
+
+refresh:
+	docker-compose down -v
+	docker-compose up -d
 
 md:
 	./vendor/bin/phpmd app,database,routes ansi phpmd.xml

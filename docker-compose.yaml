@@ -36,6 +36,14 @@ services:
     networks:
       - app-network
 
+  redis:
+    image: redis:alpine
+    container_name: redis
+    networks:
+      - app-network
+    ports:
+      - "6379:6379"
+
   mailpit:
     image: axllent/mailpit
     restart: always

@@ -6,15 +6,16 @@ namespace App\Clients\GitHubClient;
 
 use App\Clients\ClientInterface;
 use App\Clients\GuzzleClient;
-use App\Helpers\RateLimitingMiddleware\HeaderRateLimiter\GitHubHeaderRateLimiterMiddleware;
-use App\Helpers\RateLimitingMiddleware\HeaderRateLimiter\RateLimiterServiceInterface;
+use App\Helpers\LoggerMiddleware\ResponseLoggerMiddleware;
+use App\Helpers\RateLimitingMiddleware\GitHubRateLimiterMiddleware;
+use App\Helpers\RateLimitingMiddleware\HeaderRateLimiter\GitHubRateLimiter;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
 
 class GitHubClientFactory
 {
-    private const BASE_URL = 'https://api.github.com/';
+    public const BASE_URL = 'https://api.github.com/';
 
     public static function make(): ClientInterface
     {
@@ -47,12 +48,15 @@ class GitHubClientFactory
         $handler = new CurlHandler();
         $stack->setHandler($handler);
 
-        $rateLimiter = app()->makeWith(RateLimiterServiceInterface::class, [
-                            'key' => config('github.api_key')
-                        ]);
+        $key = config('github.api_key');
+        $rateLimiter = new GitHubRateLimiter($key);
+        $middleware = app()->makeWith(GitHubRateLimiterMiddleware::class, ['rateLimiter' => $rateLimiter]);
 
-        $middleware = app()->makeWith(GitHubHeaderRateLimiterMiddleware::class, ['rateLimiter' => $rateLimiter]);
         $stack->push($middleware);
+
+
+        $responseLoggerMiddleware = new ResponseLoggerMiddleware();
+        $stack->push($responseLoggerMiddleware);
 
         return $stack;
     }

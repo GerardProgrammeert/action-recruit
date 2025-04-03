@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Helpers\RateLimitingMiddleware\HeaderRateLimiter;
+namespace App\Helpers\RateLimitingMiddleware;
 
-use Carbon\Carbon;
+use App\Helpers\RateLimitingMiddleware\HeaderRateLimiter\HeaderRateLimiterInterface;
+use App\Helpers\RateLimitingMiddleware\HeaderRateLimiter\RateLimiterServiceInterface;
+use App\Helpers\RateLimitingMiddleware\HeaderRateLimiter\TrackRequestRateLimiterInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
-abstract class AbstractHeaderRateLimiterMiddleware
+abstract class AbstractRateLimiterMiddleware
 {
     public function __construct(private readonly RateLimiterServiceInterface $rateLimiter)
     {
@@ -21,25 +23,19 @@ abstract class AbstractHeaderRateLimiterMiddleware
             if (!$this->rateLimiter->canMakeRequest()) {
                 throw new RuntimeException('Rate limit exceeded for ' . $request->getUri()->getHost());
             }
+
+            if ($this->rateLimiter instanceof TrackRequestRateLimiterInterface) {
+                $this->rateLimiter->trackRequest();
+            }
+
             return $handler($request, $options)->then(
                 function (ResponseInterface $response) {
-                    $this->setRateLimitFromHeaders($response->getHeaders());
+                    if ($this->rateLimiter instanceof HeaderRateLimiterInterface) {
+                        $this->rateLimiter->updateRateLimits($response);
+                    }
                     return $response;
                 }
             );
         };
-    }
-
-    private function setRateLimitFromHeaders(array $headers): void
-    {
-        $remainingRequest = $headers['X-RateLimit-Remaining'][0] ?? null;
-        $resetTimestamp = $headers['X-RateLimit-Reset'][0] ?? null;
-
-        if (!$remainingRequest && !$resetTimestamp) {
-            throw new RunTimeException('Cannot set remaining rate limit');
-        }
-
-        $expirationDate = Carbon::createFromTimestamp($resetTimestamp, 'UTC');
-        $this->rateLimiter->setRemainingCalls((int) $remainingRequest, $expirationDate);
     }
 }

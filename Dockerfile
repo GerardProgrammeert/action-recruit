@@ -23,50 +23,15 @@ RUN apt-get update && apt-get install -y \
 # Install MySQL client
 RUN apt-get update && apt-get install -y default-mysql-client
 
-# Set the working directory to /var/www
-WORKDIR /var/www/html
-
-COPY . .
-
-## Change permissions for solving Forbidden issue when opening laravel
-#RUN chown -R www-data:www-data /var/www/html
-# Change permissions of the storage directory
-##RUN chmod -R 777 /var/www/html/storage
-
-RUN useradd -ms /bin/bash appuser
-# Set ownership and permissions for the application directory
-#RUN chown -R appuser:appuser /var/www/html \
-#    && find /var/www/html -type d -exec chmod 755 {} \; \
-#    && find /var/www/html -type f -exec chmod 644 {} \; \
-#    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
-# Switch to the new user
-RUN echo "This is an example file." > root.txt \
-    && cat root.txt
-
-VOLUME /var/www/html
-##USER appuser
-#RUN composer create-project laravel/laravel ./laravel
-##RUN echo "This is an example file." > user2.txt
-
-#docker cp my-container:/var/www/html/root.txt .
-
-
 # Expose port 9000 for PHP-FPM
 EXPOSE 9000
 
-# Create a user named "php" with a specific user ID and group ID
-#RUN groupadd -r php && useradd -r -g php php
-
-# Switch to the "php" user for subsequent instructions
-#USER php
-
-
-
+#Match WSL's UID
+ARG UID=1000
+RUN useradd -m -u $UID -s /bin/bash php
+USER php
 
 # Start PHP-FPM
 CMD ["php-fpm"]
 
 RUN echo 'alias pa="php artisan"' >> ~/.bashrc
-
-# Optionally, you can add your application code by copying it into the container
-# COPY . /var/www

@@ -7,5 +7,4 @@ enum TimeUnit: string
     case DAY = 'day';
     case HOUR = 'hour';
     case MINUTE = 'minute';
-    case SECOND = 'second';
 }

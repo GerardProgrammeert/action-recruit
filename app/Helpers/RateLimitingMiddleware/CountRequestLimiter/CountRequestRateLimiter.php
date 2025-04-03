@@ -45,9 +45,9 @@ class CountRequestRateLimiter
     {
         $now = Carbon::now('UTC');
         $expirationTime = match ($this->unit) {
-            TimeUnit::DAY => $now->copy()->setTime(12, 0),
-            TimeUnit::HOUR => $now->copy()->addHour()->startOfHour(),
-            TimeUnit::MINUTE => $now->copy()->addMinute()->startOfMinute(),
+            TimeUnit::DAY => $now->setTime(12, 0),
+            TimeUnit::HOUR => $now->addHour()->startOfHour(),
+            TimeUnit::MINUTE => $now->addMinute()->startOfMinute(),
         };
 
         return $expirationTime;
