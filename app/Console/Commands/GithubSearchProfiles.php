@@ -4,14 +4,16 @@ namespace App\Console\Commands;
 
 use App\Models\Profile;
 use App\Services\GitHubServices;
+use App\Services\Responses\Collections\GitHubUserResultCollection;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use function Laravel\Prompts\text;
 
 class GithubSearchProfiles extends Command
 {
-    protected $signature = 'github:search';
+    protected $signature = 'github:search {keywords? : The keywords to search for on GitHub}';
 
-    protected $description = 'Search for user profiles on github';
+    protected $description = 'Search GitHub for user profiles matching the provided keywords.';
 
     public function __construct(private readonly GitHubServices $service)
     {
@@ -20,24 +22,37 @@ class GithubSearchProfiles extends Command
 
     public function handle(): void
     {
-        $keywords = 'location:Netherlands PHP in:repos';
+        $keywords = $this->getKeywords();
+
+        $this->info('Start searching for profiles containing ' . $keywords);
+        $this->output->write('Searching profiles');
         $profiles = $this->getProfiles($keywords);
         $this->storeProfiles($profiles);
+        $this->info('Finished searching');
+        $this->info("{$profiles->count()} profiles found.");
     }
 
     private function getProfiles(string $keywords): Collection
     {
-        $page = 0;
-        $result = new Collection();
-        //todo move this to do client
-        //create a pagination middleware
+        $page = 1;
+        $collection = new GitHubUserResultCollection();
         do {
-            $page++;
-            $response = $this->service->searchUsers($keywords, $page);
-            $result = $result->merge($response['items']);
-        } while (!empty($response['items']));
+            try {
+                $this->output->write('.');
+                $response = retry(3, function () use ($keywords, $page) {
+                    return $this->service->searchUsers($keywords, $page);
+                }, 1000);
+                $items = $response->getCollection();
+                $collection = $collection->merge($items);
+                $page++;
+            }
+            catch (\Exception $e) {
+                $this->error("Error occurred while fetching page $page: " . $e->getMessage());
+                break;
+            }
+        } while ($response->hasItems());
 
-        return $result;
+        return $collection;
     }
 
     private function storeProfiles(Collection $profiles): void
@@ -46,13 +61,23 @@ class GithubSearchProfiles extends Command
             return;
         }
 
-        $profiles->each(function ($profile) {
-            $profile['github_id'] = $profile['id'];
-            unset($profile['id']);
-            Profile::updateOrCreate(
-                ['github_id' => $profile['github_id']],
-                $profile
-            );
+        $profiles->chunk(500)->each(function ($chunk) {
+            Profile::query()->upsert($chunk->toArray(), ['github_id']);
         });
+    }
+
+    public function getKeywords(): string
+    {
+        $keywords = $this->argument('keywords');
+
+        if (empty($keywords)) {
+            $keywords = text(
+                label: 'Please provide keyword(s) to search GitHub profiles!',
+                placeholder: 'location:Netherlands PHP in:repos',
+                required: true
+            );
+        }
+
+        return $keywords;
     }
 }

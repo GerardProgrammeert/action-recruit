@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use App\Services\UserType;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
+    /** @use HasFactory<\Database\Factories\ProfileFactory> */
+    use HasFactory;
+
     /**
-     * The attributes that are mass assignable.
-     *
      * @var list<string>
      */
     protected $fillable = [
@@ -22,11 +25,22 @@ class Profile extends Model
         'email',
         'twitter_username',
         'blog',
-        'linkedin_links',
+        'is_done',
         'is_fetched',
+        'linkedin_links',
     ];
 
-    protected $casts = [
-        'linkedin_links' => 'array',
-    ];
+    /**
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'github_id' => 'integer',
+            'linkedin_links' => 'array',
+            'type' => UserType::class,
+            'is_done' => 'boolean',
+            'is_fetched' => 'boolean',
+        ];
+    }
 }

@@ -14,8 +14,11 @@ class GitHubRateLimiter extends AbstractRateLimiter implements HeaderRateLimiter
 {
     const CACHE_KEY = 'github_rate_limiter';
 
+    /**
+     * @see https://docs.github.com/en/rest/search/search?apiVersion=2022-11-28
+     */
     public function __construct(
-        private readonly int $maxRateLimit = 150,
+        private readonly int $maxRateLimit = 10,
     ) {
         $this->initRateLimiter();
     }

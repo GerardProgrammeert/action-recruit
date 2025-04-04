@@ -24,8 +24,7 @@ class ResponseLoggerMiddleware
                     $this->response = $response;
                     $body = $response->getBody()->getContents();
                     $path = $this->getFilePath();
-                    $result = Storage::put("$path.json", $body);
-                    dd( $result);
+                    Storage::put("$path.json", $body);
                     $response->getBody()->rewind();
 
                     return $response;
@@ -52,7 +51,7 @@ class ResponseLoggerMiddleware
     private function getDir($url): string
     {
         $host = parse_url($url, PHP_URL_HOST);
-        $dirName = Str::replace('.','-', $host);
+        $dirName = Str::replace('.', '-', $host);
 
         if (!Storage::exists($dirName)) {
             Storage::makeDirectory($dirName);

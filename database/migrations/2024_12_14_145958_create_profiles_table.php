@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->integer('github_id');
-            $table->text('type')->nullable();
+            $table->unsignedBigInteger('github_id')->unique('github_id');
             $table->text('url')->nullable();
             $table->text('html_url')->nullable();
             $table->text('location')->nullable();

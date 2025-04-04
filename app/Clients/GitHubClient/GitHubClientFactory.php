@@ -12,6 +12,7 @@ use App\Helpers\RateLimitingMiddleware\HeaderRateLimiter\GitHubRateLimiter;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
+use RuntimeException;
 
 class GitHubClientFactory
 {
@@ -36,7 +37,7 @@ class GitHubClientFactory
     private static function getHeaders(): array
     {
         return [
-            'Authorization' => 'token ' . config('github.api_key'),
+            'Authorization' => 'token ' . self::getApiKey(),
             'Accept'        => 'application/vnd.github.v3+json',
         ];
     }
@@ -58,5 +59,14 @@ class GitHubClientFactory
         $stack->push($responseLoggerMiddleware);
 
         return $stack;
+    }
+
+    private static function getApiKey(): string
+    {
+        if (!$key = config('github.api_key')) {
+            throw new RuntimeException('No API Key for Github client provided ');
+        }
+
+        return $key;
     }
 }

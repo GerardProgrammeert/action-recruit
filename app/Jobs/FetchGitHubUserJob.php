@@ -10,7 +10,7 @@ use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
-class FetchUserJob implements ShouldQueue
+class FetchGitHubUserJob implements ShouldQueue
 {
     use Queueable;
 
@@ -31,11 +31,12 @@ class FetchUserJob implements ShouldQueue
 
         $userName = $this->getUserName();
         if (!$userName) {
+            //todo is done
             return;
         }
 
         $data = $service->getProfile($userName);
-
+        //@todo different google search job?
         $links = $this->googleLinkedinSearch($data['name']);
         if ($links) {
             $data['linkedin_links'] = $links;
@@ -51,9 +52,10 @@ class FetchUserJob implements ShouldQueue
         }
 
         $user = Str::after($this->profile->url, '/users/');
-
+        //todo what happens here
         return $user === $this->profile->url ? null : $user;
     }
+
     private function googleLinkedinSearch(string $fullName): ?array
     {
 
