@@ -18,30 +18,9 @@ class GitHubServices
 
     public function searchUsers(GitHubSearchQueryBuilder $queryBuilder): GitHubSearchUsersResponse
     {
-        $keywords = 'PHP type:' . UserTypeEnum::USER->value . '+location:Netherlands';
-        $keywords = 'location:Netherlands PHP type:' . UserTypeEnum::USER->value;
-       // $keywords = 'login:KarterMC';
-       // $keywords = 'tom';
-       // $keywords = 'location:Netherlands PHP in:repos+type:User';
-        //$keywords = 'location:Netherlands PHP in:repos+type:' . UserType::USER->value;
+        $rawResponse = $this->client->get(Endpoints::SEARCH_USERS->value,  $queryBuilder->toArray());
 
-dump($keywords);
-        $array = $queryBuilder->toArray();
-        $params = [
-            'q' => urldecode($keywords),
-            'per_page' => 100,
-            'page' => $array['page'],
-        ];
-        $params = ['query' => $params];
-
-        $rawResponse = $this->client->get(Endpoints::SEARCH_USERS->value, $params);
-//dd($rawResponse->getBody()->getContents());
         return new GitHubSearchUsersResponse($rawResponse);
-    }
-
-    private function buildQuery(string $keywords, string $userType): string
-    {
-        return $keywords . ' type:' . $userType;
     }
 
     public function getProfile(string $user): array

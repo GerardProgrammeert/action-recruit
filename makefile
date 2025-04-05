@@ -1,7 +1,7 @@
 project = action-recruit# change this for your project name
 
 in:
-	docker exec --user=php -it "$(project)-php-fpm-1" /bin/bash
+	docker exec --user=php -it "$(project)-php-fpm-1" /bin/sh
 
 up:
 	docker-compose up -d

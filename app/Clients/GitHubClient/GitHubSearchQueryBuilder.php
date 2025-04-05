@@ -10,7 +10,7 @@ class GitHubSearchQueryBuilder
     private string $keywords = '';
     private array $allowedOperators = ['=', '>' , '<'];
     private int $perPage = 100;
-    private int $page = 1;
+    private int $offset = 1;
 
     public function setKeywords(string $keywords): self
     {
@@ -43,22 +43,26 @@ class GitHubSearchQueryBuilder
         return $this;
     }
 
-    public function setPage(int $page): self
+    public function setOffset(int $offset): self
     {
-        $this->page = $page;
+        $this->offset = $offset;
 
         return $this;
     }
-
+    /**
+     *@return array<string, array<string, int,string>>
+     */
     public function toArray(): array
     {
-        $query = $this->keywords . ' ' . implode('+', $this->conditions);
-//dump($query);
-//dump($this->page);
+        $query = $this->keywords . ' ' . implode(' ', $this->conditions);
+
         return [
-            'q' => $query,
-            'per_page' => $this->perPage,
-            'page' => $this->page,
+            'query' =>
+                [
+                    'q' => $query,
+                    'per_page' => $this->perPage,
+                    'page' => $this->offset,
+                ],
         ];
     }
 

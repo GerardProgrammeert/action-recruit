@@ -6,10 +6,8 @@ use App\Actions\Profile\StoreProfilesAction;
 use App\Clients\GitHubClient\Enums\UserTypeEnum;
 use App\Clients\GitHubClient\GitHubSearchQueryBuilder;
 use App\Clients\GitHubClient\Responses\Collections\GitHubUserResultCollection;
-use App\Models\Profile;
 use App\Services\GitHubServices;
 use Illuminate\Console\Command;
-use Illuminate\Support\Collection;
 use function Laravel\Prompts\text;
 
 class GithubSearchProfiles extends Command
@@ -30,12 +28,12 @@ class GithubSearchProfiles extends Command
         $this->info('Start searching for profiles containing ' . $keywords);
         $this->output->write('Searching profiles');
         $profiles = $this->getProfiles($keywords);
-        (new StoreProfilesAction($profiles)->execute();
+        (new StoreProfilesAction())->execute($profiles);
         $this->info('Finished searching');
         $this->info("{$profiles->count()} profiles found.");
     }
 
-    private function getProfiles(string $keywords): Collection
+    private function getProfiles(string $keywords): GitHubUserResultCollection
     {
         $page = 1;
         $collection = new GitHubUserResultCollection();
@@ -58,17 +56,6 @@ class GithubSearchProfiles extends Command
         return $collection;
     }
 
-    private function storeProfiles(Collection $profiles): void
-    {
-        if ($profiles->isEmpty()) {
-            return;
-        }
-
-        $profiles->chunk(500)->each(function ($chunk) {
-            Profile::query()->upsert($chunk->toArray(), ['github_id']);
-        });
-    }
-
     public function getKeywords(): string
     {
         $keywords = $this->argument('keywords');
@@ -84,15 +71,15 @@ class GithubSearchProfiles extends Command
         return $keywords;
     }
 
-    private function getQueryBuilder(string $keywords, int $page): GitHubSearchQueryBuilder
+    private function getQueryBuilder(string $keywords, int $offset): GitHubSearchQueryBuilder
     {
         $queryBuilder = new GitHubSearchQueryBuilder();
         $queryBuilder->setKeywords($keywords);
-        $queryBuilder->setPage($page);
+        $queryBuilder->setOffset($offset);
         $queryBuilder
             ->where('type', '=', UserTypeEnum::USER->value)
-            ->where('location', '=', 'Netherlands');
-           // ->where('repos', '>' , 20000);
+            ->where('location', '=', 'Netherlands')
+            ->where('repos', '>' , 10);
 
         return $queryBuilder;
     }

@@ -7,7 +7,7 @@ use App\Models\Profile;
 
 class StoreProfilesAction
 {
-    public function execute(GitHubUserResultCollection $profiles) : void
+    public function execute(GitHubUserResultCollection $profiles): void
     {
         if ($profiles->isEmpty()) {
             return;

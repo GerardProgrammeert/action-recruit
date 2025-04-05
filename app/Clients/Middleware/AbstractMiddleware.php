@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Clients\Middleware\RateLimitingMiddleware;
+namespace App\Clients\Middleware;
 
 use App\Clients\Middleware\RateLimitingMiddleware\HeaderRateLimiter\HeaderRateLimiterInterface;
 use App\Clients\Middleware\RateLimitingMiddleware\HeaderRateLimiter\RateLimiterServiceInterface;

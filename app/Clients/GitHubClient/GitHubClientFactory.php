@@ -6,14 +6,15 @@ namespace App\Clients\GitHubClient;
 
 use App\Clients\ClientFactoryInterface;
 use App\Clients\ClientInterface;
+use App\Clients\GitHubClient\Middleware\GitHubMiddleware;
+use App\Clients\GitHubClient\Middleware\GitHubRateLimiterMiddleware;
 use App\Clients\GuzzleClient;
-use App\Clients\Middleware\RateLimitingMiddleware\GitHubMiddleware;
 use App\Clients\Middleware\ResponseLoggerMiddleware;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
 
-readonly class GitHubClientFactory implements ClientFactoryInterface
+final readonly class GitHubClientFactory implements ClientFactoryInterface
 {
     public function __construct(private string $baseUrl, private string $apiKey)
     {
@@ -50,7 +51,7 @@ readonly class GitHubClientFactory implements ClientFactoryInterface
         $handler = new CurlHandler();
         $stack->setHandler($handler);
 
-        $rateLimiter = new GitHubMiddleware();
+        $rateLimiter = new GitHubRateLimiterMiddleware();
         $middleware = app()->makeWith(GitHubMiddleware::class, ['rateLimiter' => $rateLimiter]);
 
         $stack->push($middleware);
