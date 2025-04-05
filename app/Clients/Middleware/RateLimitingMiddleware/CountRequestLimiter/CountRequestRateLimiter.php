@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Helpers\RateLimitingMiddleware\CountRequestLimiter;
+namespace App\Clients\Middleware\RateLimitingMiddleware\CountRequestLimiter;
 
-use App\Helpers\RateLimitingMiddleware\TimeUnit;
+use App\Clients\Middleware\RateLimitingMiddleware\TimeUnit;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 

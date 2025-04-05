@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Clients\GitHubClient\Enums;
 
-enum UserType: string
+enum UserTypeEnum: string
 {
     case USER = 'User';
     case ORGANIZATION = 'Organization';

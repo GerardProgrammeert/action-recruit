@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Clients\ClientInterface;
-use App\Services\Responses\GitHubSearchUsersResponse;
+use App\Clients\GitHubClient\Endpoints;
+use App\Clients\GitHubClient\Enums\UserTypeEnum;
+use App\Clients\GitHubClient\GitHubSearchQueryBuilder;
+use App\Clients\GitHubClient\Responses\GitHubSearchUsersResponse;
 
 class GitHubServices
 {
@@ -15,10 +18,10 @@ class GitHubServices
 
     public function searchUsers(GitHubSearchQueryBuilder $queryBuilder): GitHubSearchUsersResponse
     {
-        $keywords = 'PHP type:' . UserType::USER->value . '+location:Netherlands';
-        $keywords = 'location:Netherlands PHP type:' . UserType::USER->value;
-        $keywords = 'login:KarterMC';
-        $keywords = 'tom';
+        $keywords = 'PHP type:' . UserTypeEnum::USER->value . '+location:Netherlands';
+        $keywords = 'location:Netherlands PHP type:' . UserTypeEnum::USER->value;
+       // $keywords = 'login:KarterMC';
+       // $keywords = 'tom';
        // $keywords = 'location:Netherlands PHP in:repos+type:User';
         //$keywords = 'location:Netherlands PHP in:repos+type:' . UserType::USER->value;
 

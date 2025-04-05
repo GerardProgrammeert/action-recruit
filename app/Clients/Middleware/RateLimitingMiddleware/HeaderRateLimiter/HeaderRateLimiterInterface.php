@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\RateLimitingMiddleware\HeaderRateLimiter;
+namespace App\Clients\Middleware\RateLimitingMiddleware\HeaderRateLimiter;
 
 use DateTimeInterface;
 use Psr\Http\Message\ResponseInterface;

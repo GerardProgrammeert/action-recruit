@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Helpers\RateLimitingMiddleware;
+namespace App\Clients\Middleware\RateLimitingMiddleware;
 
-use App\Helpers\RateLimitingMiddleware\HeaderRateLimiter\HeaderRateLimiterInterface;
-use App\Helpers\RateLimitingMiddleware\HeaderRateLimiter\RateLimiterServiceInterface;
-use App\Helpers\RateLimitingMiddleware\HeaderRateLimiter\TrackRequestRateLimiterInterface;
+use App\Clients\Middleware\RateLimitingMiddleware\HeaderRateLimiter\HeaderRateLimiterInterface;
+use App\Clients\Middleware\RateLimitingMiddleware\HeaderRateLimiter\RateLimiterServiceInterface;
+use App\Clients\Middleware\RateLimitingMiddleware\HeaderRateLimiter\TrackRequestRateLimiterInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
-abstract class AbstractRateLimiterMiddleware
+abstract class AbstractMiddleware
 {
     public function __construct(private readonly RateLimiterServiceInterface $rateLimiter)
     {

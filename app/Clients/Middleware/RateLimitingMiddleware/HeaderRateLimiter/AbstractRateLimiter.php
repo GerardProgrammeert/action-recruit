@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Helpers\RateLimitingMiddleware\HeaderRateLimiter;
+namespace App\Clients\Middleware\RateLimitingMiddleware\HeaderRateLimiter;
 
-use App\Helpers\RateLimitingMiddleware\TimeUnit;
+use App\Clients\Middleware\RateLimitingMiddleware\TimeUnit;
 use Carbon\Carbon;
 
 class AbstractRateLimiter

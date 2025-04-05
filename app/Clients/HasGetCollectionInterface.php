@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Services\Responses\Interfaces;
-
-use App\Services\Responses\Collections\AbstractCollection;
+namespace App\Clients;
 
 interface HasGetCollectionInterface
 {

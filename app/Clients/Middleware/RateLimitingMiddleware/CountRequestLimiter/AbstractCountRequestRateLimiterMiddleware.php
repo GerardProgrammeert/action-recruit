@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Helpers\RateLimitingMiddleware\CountRequestLimiter;
+namespace App\Clients\Middleware\RateLimitingMiddleware\CountRequestLimiter;
 
 use Psr\Http\Message\RequestInterface;
 use RuntimeException;

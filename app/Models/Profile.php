@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Services\UserType;
+use App\Clients\GitHubClient\Enums\UserTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -38,7 +38,7 @@ class Profile extends Model
         return [
             'github_id' => 'integer',
             'linkedin_links' => 'array',
-            'type' => UserType::class,
+            'type' => UserTypeEnum::class,
             'is_done' => 'boolean',
             'is_fetched' => 'boolean',
         ];

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Clients\GitHubClient;
 
 use InvalidArgumentException;
 
@@ -26,10 +26,10 @@ class GitHubSearchQueryBuilder
         }
 
         if ($operator === '=') {
-            $condition = "{$field}:{$value}";
+            $condition = "$field:$value";
         }
         else {
-            $condition = "{$field}:{$operator}{$value}";
+            $condition = "$field:$operator$value";
         }
         $this->conditions[] = $condition;
 

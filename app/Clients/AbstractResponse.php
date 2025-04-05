@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Services\Responses;
+namespace App\Clients;
 
-use App\Services\Responses\Exceptions\ErrorResponseException;
 use Illuminate\Support\Arr;
 use Psr\Http\Message\ResponseInterface;
 

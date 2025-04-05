@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Helpers\RateLimitingMiddleware\HeaderRateLimiter;
+namespace App\Clients\GitHubClient\Middleware;
 
+use App\Clients\Middleware\RateLimitingMiddleware\HeaderRateLimiter\AbstractRateLimiter;
+use App\Clients\Middleware\RateLimitingMiddleware\HeaderRateLimiter\HeaderRateLimiterInterface;
 use Carbon\Carbon;
 use DateTimeInterface;
 use Illuminate\Support\Facades\Cache;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
-class GitHubRateLimiter extends AbstractRateLimiter implements HeaderRateLimiterInterface
+class GitHubRateLimiterMiddleware extends AbstractRateLimiter implements HeaderRateLimiterInterface
 {
     const CACHE_KEY = 'github_rate_limiter';
 

@@ -3,11 +3,11 @@
 namespace App\Console\Commands;
 
 use App\Actions\Profile\StoreProfilesAction;
+use App\Clients\GitHubClient\Enums\UserTypeEnum;
+use App\Clients\GitHubClient\GitHubSearchQueryBuilder;
+use App\Clients\GitHubClient\Responses\Collections\GitHubUserResultCollection;
 use App\Models\Profile;
-use App\Services\GitHubSearchQueryBuilder;
 use App\Services\GitHubServices;
-use App\Services\Responses\Collections\GitHubUserResultCollection;
-use App\Services\UserType;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use function Laravel\Prompts\text;
@@ -90,7 +90,7 @@ class GithubSearchProfiles extends Command
         $queryBuilder->setKeywords($keywords);
         $queryBuilder->setPage($page);
         $queryBuilder
-            ->where('type', '=', UserType::USER->value)
+            ->where('type', '=', UserTypeEnum::USER->value)
             ->where('location', '=', 'Netherlands');
            // ->where('repos', '>' , 20000);
 

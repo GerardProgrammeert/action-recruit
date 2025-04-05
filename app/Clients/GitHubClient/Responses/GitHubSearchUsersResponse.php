@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Services\Responses;
+namespace App\Clients\GitHubClient\Responses;
 
-use App\Services\Responses\Collections\GitHubUserResultCollection;
-use App\Services\Responses\Interfaces\HasGetCollectionInterface;
+use App\Clients\AbstractResponse;
+use App\Clients\GitHubClient\Responses\Collections\GitHubUserResultCollection;
+use App\Clients\HasGetCollectionInterface;
 
 final class GitHubSearchUsersResponse extends AbstractResponse implements HasGetCollectionInterface
 {

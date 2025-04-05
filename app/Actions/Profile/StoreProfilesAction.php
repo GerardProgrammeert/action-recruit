@@ -2,8 +2,8 @@
 
 namespace App\Actions\Profile;
 
+use App\Clients\GitHubClient\Responses\Collections\GitHubUserResultCollection;
 use App\Models\Profile;
-use App\Services\Responses\Collections\GitHubUserResultCollection;
 
 class StoreProfilesAction
 {

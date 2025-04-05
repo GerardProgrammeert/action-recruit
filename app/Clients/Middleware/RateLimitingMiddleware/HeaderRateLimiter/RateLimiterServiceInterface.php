@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Helpers\RateLimitingMiddleware\HeaderRateLimiter;
-
-use DateTimeInterface;
+namespace App\Clients\Middleware\RateLimitingMiddleware\HeaderRateLimiter;
 
 interface RateLimiterServiceInterface
 {

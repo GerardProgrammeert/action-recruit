@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Helpers\LoggerMiddleware;
+namespace App\Clients\Middleware;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;

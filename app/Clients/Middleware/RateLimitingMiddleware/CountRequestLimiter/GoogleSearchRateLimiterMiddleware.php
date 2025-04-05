@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Helpers\RateLimitingMiddleware\CountRequestLimiter;
+namespace App\Clients\Middleware\RateLimitingMiddleware\CountRequestLimiter;
 
 class GoogleSearchRateLimiterMiddleware extends AbstractCountRequestRateLimiterMiddleware
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\RateLimitingMiddleware\HeaderRateLimiter;
+namespace App\Clients\Middleware\RateLimitingMiddleware\HeaderRateLimiter;
 
 interface TrackRequestRateLimiterInterface extends RateLimiterServiceInterface
 {

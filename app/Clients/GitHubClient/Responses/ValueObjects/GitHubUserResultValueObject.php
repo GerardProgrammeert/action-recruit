@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Services\Responses\ValueObjects;
+namespace App\Clients\GitHubClient\Responses\ValueObjects;
 
+use App\Clients\GitHubClient\Enums\UserTypeEnum;
 use Illuminate\Contracts\Support\Arrayable;
 use InvalidArgumentException;
 
-class GitHubUserResult implements Arrayable
+final readonly class GitHubUserResultValueObject implements Arrayable
 {
     private int $github_id;
     private ?string $url;
@@ -40,8 +41,8 @@ class GitHubUserResult implements Arrayable
         return $data['id'];
     }
 
-    private static function getType(array $data): ?UserType
+    private static function getType(array $data): ?UserTypeEnum
     {
-        return UserType::tryFrom($data['type'] ?? null);
+        return UserTypeEnum::tryFrom($data['type'] ?? null);
     }
 }

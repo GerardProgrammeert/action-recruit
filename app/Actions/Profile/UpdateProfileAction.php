@@ -3,12 +3,12 @@
 namespace App\Actions\Profile;
 
 use App\Actions\ActionInterface;
+use App\Clients\GitHubClient\Responses\ValueObjects\GitHubUserResultValueObject;
 use App\Models\Profile;
-use App\Services\Responses\ValueObjects\GitHubUserResult;
 
 class UpdateProfileAction implements ActionInterface
 {
-    public function execute(GitHubUserResult $profile): void
+    public function execute(GitHubUserResultValueObject $profile): void
     {
         Profile::query()->update($profile->toArray());
     }

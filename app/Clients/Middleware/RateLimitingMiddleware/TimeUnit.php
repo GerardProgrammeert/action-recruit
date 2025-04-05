@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\RateLimitingMiddleware;
+namespace App\Clients\Middleware\RateLimitingMiddleware;
 
 enum TimeUnit: string
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Responses\Collections;
+namespace App\Clients;
 
 use Illuminate\Support\Collection;
 
-class AbstractCollection extends Collection
+abstract class AbstractCollection extends Collection
 {
     /**@var class-string */
     protected string $className;
