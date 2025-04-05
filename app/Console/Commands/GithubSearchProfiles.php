@@ -2,9 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Actions\Profile\StoreProfilesAction;
 use App\Models\Profile;
+use App\Services\GitHubSearchQueryBuilder;
 use App\Services\GitHubServices;
 use App\Services\Responses\Collections\GitHubUserResultCollection;
+use App\Services\UserType;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use function Laravel\Prompts\text;
@@ -27,7 +30,7 @@ class GithubSearchProfiles extends Command
         $this->info('Start searching for profiles containing ' . $keywords);
         $this->output->write('Searching profiles');
         $profiles = $this->getProfiles($keywords);
-        $this->storeProfiles($profiles);
+        (new StoreProfilesAction($profiles)->execute();
         $this->info('Finished searching');
         $this->info("{$profiles->count()} profiles found.");
     }
@@ -40,7 +43,7 @@ class GithubSearchProfiles extends Command
             try {
                 $this->output->write('.');
                 $response = retry(3, function () use ($keywords, $page) {
-                    return $this->service->searchUsers($keywords, $page);
+                    return $this->service->searchUsers($this->getQueryBuilder($keywords, $page));
                 }, 1000);
                 $items = $response->getCollection();
                 $collection = $collection->merge($items);
@@ -73,11 +76,24 @@ class GithubSearchProfiles extends Command
         if (empty($keywords)) {
             $keywords = text(
                 label: 'Please provide keyword(s) to search GitHub profiles!',
-                placeholder: 'location:Netherlands PHP in:repos',
+                placeholder: 'PHP',
                 required: true
             );
         }
 
         return $keywords;
+    }
+
+    private function getQueryBuilder(string $keywords, int $page): GitHubSearchQueryBuilder
+    {
+        $queryBuilder = new GitHubSearchQueryBuilder();
+        $queryBuilder->setKeywords($keywords);
+        $queryBuilder->setPage($page);
+        $queryBuilder
+            ->where('type', '=', UserType::USER->value)
+            ->where('location', '=', 'Netherlands');
+           // ->where('repos', '>' , 20000);
+
+        return $queryBuilder;
     }
 }

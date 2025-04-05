@@ -13,19 +13,26 @@ class GitHubServices
     {
     }
 
-    public function searchUsers(string $keywords, int $offset): GitHubSearchUsersResponse
+    public function searchUsers(GitHubSearchQueryBuilder $queryBuilder): GitHubSearchUsersResponse
     {
-        $keywords = $keywords . ' type:' . UserType::USER->value;
+        $keywords = 'PHP type:' . UserType::USER->value . '+location:Netherlands';
+        $keywords = 'location:Netherlands PHP type:' . UserType::USER->value;
+        $keywords = 'login:KarterMC';
+        $keywords = 'tom';
+       // $keywords = 'location:Netherlands PHP in:repos+type:User';
+        //$keywords = 'location:Netherlands PHP in:repos+type:' . UserType::USER->value;
 
+dump($keywords);
+        $array = $queryBuilder->toArray();
         $params = [
-            'q' => $keywords,
+            'q' => urldecode($keywords),
             'per_page' => 100,
-            'page' => $offset,
+            'page' => $array['page'],
         ];
         $params = ['query' => $params];
 
         $rawResponse = $this->client->get(Endpoints::SEARCH_USERS->value, $params);
-
+//dd($rawResponse->getBody()->getContents());
         return new GitHubSearchUsersResponse($rawResponse);
     }
 

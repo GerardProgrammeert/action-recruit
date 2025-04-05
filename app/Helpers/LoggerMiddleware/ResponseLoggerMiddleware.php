@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Helpers\LoggerMiddleware;
 
-use App\Clients\GitHubClient\GitHubClientFactory;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Psr\Http\Message\RequestInterface;
@@ -22,9 +21,8 @@ class ResponseLoggerMiddleware
             return $handler($request, $options)->then(
                 function (ResponseInterface $response) {
                     $this->response = $response;
-                    $body = $response->getBody()->getContents();
                     $path = $this->getFilePath();
-                    Storage::put("$path.json", $body);
+                    Storage::put("$path.json", $this->response->getBody()->getContents());
                     $response->getBody()->rewind();
 
                     return $response;
@@ -39,18 +37,17 @@ class ResponseLoggerMiddleware
             Str::replace(
                 '/',
                 '-',
-                Str::after($this->request->getUri()->getPath(), GitHubClientFactory::BASE_URL . '/')
+                Str::after($this->request->getUri()->getPath(), $this->gethost() . '/')
             )
         );
+        $timestamp = round(microtime(true) * 1000);
 
-        $dir = $this->getDir(GitHubClientFactory::BASE_URL);
-
-        return $dir . '/' . $path . '-' . $this->response->getStatusCode() . '-' . time();
+        return $this->getDir() . '/' . $path . '-' . $this->response->getStatusCode() . '-' . $timestamp;
     }
 
-    private function getDir($url): string
+    private function getDir(): string
     {
-        $host = parse_url($url, PHP_URL_HOST);
+        $host = parse_url($this->gethost(), PHP_URL_HOST);
         $dirName = Str::replace('.', '-', $host);
 
         if (!Storage::exists($dirName)) {
@@ -58,5 +55,10 @@ class ResponseLoggerMiddleware
         }
 
         return $dirName;
+    }
+
+    private function getHost(): string
+    {
+        return $this->request->getUri()->getHost();
     }
 }

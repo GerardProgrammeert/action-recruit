@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Clients\GoogleSearchClient;
 
+use App\Clients\ClientFactoryInterface;
 use App\Clients\ClientInterface;
 use App\Clients\GuzzleClient;
 use App\Helpers\RateLimitingMiddleware\CountRequestLimiter\CountRequestRateLimiter;
@@ -15,7 +16,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Request;
 
-class GoogleSearchClientFactory
+class GoogleSearchClientFactory implements ClientFactoryInterface
 {
     private const BASE_URL = 'https://www.googleapis.com';
 

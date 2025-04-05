@@ -15,17 +15,20 @@ class GoogleSearchJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(private Profile $profile)
+    public function __construct(private readonly string $profileId)
     {
     }
+
 
     /**
      * Execute the job.
      */
-    public function handle(): void
+    public function handle(GitHubServices $service): void
     {
-        /** @var GitHubServices $service */
-        $service = app(GitHubServices::class);
+        $profile = Profile::query()->find($this->profileId);
+        if (!$profile){
+            return;
+        }
 
         $userName = $this->getUserName();
         if (!$userName) {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Clients\GitHubClient;
 
+use App\Clients\ClientFactoryInterface;
 use App\Clients\ClientInterface;
 use App\Clients\GuzzleClient;
 use App\Helpers\LoggerMiddleware\ResponseLoggerMiddleware;
@@ -12,37 +13,38 @@ use App\Helpers\RateLimitingMiddleware\HeaderRateLimiter\GitHubRateLimiter;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
-use RuntimeException;
 
-class GitHubClientFactory
+readonly class GitHubClientFactory implements ClientFactoryInterface
 {
-    public const BASE_URL = 'https://api.github.com/';
-
-    public static function make(): ClientInterface
+    public function __construct(private string $baseUrl, private string $apiKey)
     {
-        $client = new Client(self::settings());
+    }
+
+    public function make(): ClientInterface
+    {
+        $client = new Client($this->settings());
 
         return new GuzzleClient($client);
     }
 
-    private static function settings(): array
+    public function settings(): array
     {
         return [
-            'base_uri' => self::BASE_URL,
-            'headers'  => self::getHeaders(),
-            'handler'  => self::getStack(),
+            'base_uri' => $this->baseUrl,
+            'headers'  => $this->getHeaders(),
+            'handler'  => $this->getStack(),
         ];
     }
 
-    private static function getHeaders(): array
+    public function getHeaders(): array
     {
         return [
-            'Authorization' => 'token ' . self::getApiKey(),
+            'Authorization' => 'token ' . $this->apiKey,
             'Accept'        => 'application/vnd.github.v3+json',
         ];
     }
 
-    private static function getStack(): HandlerStack
+    public function getStack(): HandlerStack
     {
         $stack = HandlerStack::create();
 
@@ -59,14 +61,5 @@ class GitHubClientFactory
         $stack->push($responseLoggerMiddleware);
 
         return $stack;
-    }
-
-    private static function getApiKey(): string
-    {
-        if (!$key = config('github.api_key')) {
-            throw new RuntimeException('No API Key for Github client provided ');
-        }
-
-        return $key;
     }
 }

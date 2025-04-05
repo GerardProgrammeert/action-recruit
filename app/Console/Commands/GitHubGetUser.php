@@ -24,7 +24,7 @@ class GitHubGetUser extends Command
             ->take(2)->get();
 
         $profiles->each(function (Profile $profile) {
-            $fetchUserJob = new FetchGitHubUserJob($profile);
+            $fetchUserJob = new FetchGitHubUserJob($profile->id);
 
             $fetchUserJob->chain([
                 new GoogleSearchJob($profile),

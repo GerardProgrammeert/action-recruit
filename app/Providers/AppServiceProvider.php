@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
         app()->when(GitHubServices::class)
             ->needs(ClientInterface::class)
             ->give(function (): ClientInterface {
-                return GitHubClientFactory::make();
+                return (new GitHubClientFactory( env('GITHUB_API_URL'), env('GITHUB_API_KEY')))->make();
             });
     }
 }
