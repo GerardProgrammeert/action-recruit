@@ -17,36 +17,8 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Request;
 
-final readonly class GoogleSearchClientFactory implements ClientFactoryInterface
+final class GoogleSearchClientFactory extends AbstractClientFactory implements ClientFactoryInterface
 {
-    public function __construct(private string $baseUrl, private string $apiKey, private string $cseId)
-    {
-    }
-
-    public function make(): ClientInterface
-    {
-        $client = new Client($this->settings());
-
-        return new GuzzleClient($client);
-    }
-
-    public function settings(): array
-    {
-        return [
-            'base_uri' => $this->baseUrl,
-            'headers'  => $this->getHeaders(),
-            'handler'  => $this->getStack(),
-        ];
-    }
-
-    public function getHeaders(): array
-    {
-        return [
-            'Accept'       => 'application/json',
-            'Content-Type' => 'application/json',
-        ];
-    }
-
     public function getStack(): HandlerStack
     {
         $stack = HandlerStack::create();
@@ -72,19 +44,5 @@ final readonly class GoogleSearchClientFactory implements ClientFactoryInterface
         $stack->push($responseLoggerMiddleware);
 
         return $stack;
-    }
-
-    public function getDefaultQueryParams(Request $request): string
-    {
-        parse_str($request->getUri()->getQuery(), $existingQueryParams);
-
-        $params = [
-            'key' => $this->apiKey,
-            'cx'  => $this->cseId,
-        ];
-
-        $params = array_merge($params, $existingQueryParams);
-
-        return http_build_query($params, '', '&');
     }
 }
