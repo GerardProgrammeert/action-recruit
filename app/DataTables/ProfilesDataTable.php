@@ -126,6 +126,7 @@ class ProfilesDataTable extends DataTable
         return 'Profiles_' . date('YmdHis');
     }
 
+    /** @noinspection PhpUnused */
     private function getFilteredLink(string $url): ?string
     {
         if (Str::contains($url, '/nl.', true)) {
@@ -135,6 +136,7 @@ class ProfilesDataTable extends DataTable
         return null;
     }
 
+    /** @noinspection PhpUnused */
     private function getLink(string $url): string
     {
         return '<a href="' . $url . '" target="_blank">' . $url . '</a>';

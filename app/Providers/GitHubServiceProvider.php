@@ -19,7 +19,7 @@ class GitHubServiceProvider extends ServiceProvider
                     'baseUrl' => env('GITHUB_API_URL'),
                     'apiKey' => env('GITHUB_API_KEY'),
                 ];
-                if($this->app->environment('testing')) {
+                if ($this->app->environment('testing')) {
                     return (new FakeClientFactory(...$args))->make();
                 }
                 return (new GitHubClientFactory(...$args))->make();

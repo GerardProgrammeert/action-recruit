@@ -23,7 +23,7 @@ class CommandTest extends FeatureTestCase
     /***
      * @param array<string, string|int> $arguments
      */
-    protected function getCommand(array $arguments= []): PendingCommand
+    protected function getCommand(array $arguments = []): PendingCommand
     {
         return $this->getPendingCommand($this->signature, $arguments);
     }

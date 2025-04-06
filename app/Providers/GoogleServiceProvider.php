@@ -21,7 +21,7 @@ class GoogleServiceProvider extends ServiceProvider
                     'cseId' => env('GOOGLE_CSE_ID'),
                 ];
 
-                if($this->app->environment('testing')) {
+                if ($this->app->environment('testing')) {
                     return (new FakeClientFactory(...$args))->make();
                 }
                 return (new GoogleSearchClientFactory(...$args))->make();

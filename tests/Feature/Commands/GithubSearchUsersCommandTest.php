@@ -22,11 +22,10 @@ class GithubSearchUsersCommandTest extends CommandTest
     #[Test]
     public function it_should_handle_exceptions(): void
     {
-        AbstractFakeClient::fakeResponse(500,'',[],true);
+        AbstractFakeClient::fakeResponse(500, '', [], true);
         $this->artisan('github:search-users "PHP"')
             ->expectsOutput('Error occurred while fetching page 1: Internal Server Error')
             ->assertExitCode(0);
-
     }
 
     /**

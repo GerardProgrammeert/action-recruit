@@ -66,7 +66,7 @@ abstract class AbstractFakeClient
             return $this->path . '|{id}';
         }
 
-        return '/' .$this->path;
+        return '/' . $this->path;
     }
 
     protected function getPath(RequestInterface $request): string
@@ -86,7 +86,7 @@ abstract class AbstractFakeClient
         extract($query, EXTR_PREFIX_SAME, 'query');
 
         $rootPath = dirname(__DIR__);
-        $json = file_get_contents( $rootPath . $this->folderData . '/' . $fileName . '.json');
+        $json = file_get_contents($rootPath . $this->folderData . '/' . $fileName . '.json');
 
         return new FulfilledPromise(
             new Response($statusCode, ['Content-Type' => 'application/json'], $json)

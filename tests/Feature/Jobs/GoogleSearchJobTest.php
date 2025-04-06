@@ -29,7 +29,7 @@ class GoogleSearchJobTest extends FeatureTestCase
             'https://www.linkedin.com/pub/dir/+/Dreiskamper',
             'https://www.linkedin.com/pulse/php-7-has-done-wonders-language-says-stefan-phpbenelux-ahmed-khan',
             'https://nl.linkedin.com/in/denengelse',
-            'https://nl.linkedin.com/posts/mvriel_netherlands3d-amsterdamtimemachine-digitaltwin-activity-7276984503640752128-XtZ1',
+            'https://nl.linkedin.com/posts/mvriel_netherlands3d-amsterdamtimemachine-digitaltwin-activity',
             'https://nl.linkedin.com/in/stephan-de-prouw-9b97532',
             'https://nl.linkedin.com/in/jvand64',
             'https://nl.linkedin.com/in/ivozandhuis',
@@ -38,4 +38,3 @@ class GoogleSearchJobTest extends FeatureTestCase
         ];
     }
 }
-
