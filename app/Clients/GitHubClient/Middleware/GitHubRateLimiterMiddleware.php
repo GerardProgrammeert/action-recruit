@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Clients\GitHubClient\Middleware;
 
-use App\Clients\Middleware\RateLimitingMiddleware\HeaderRateLimiter\AbstractRateLimiter;
 use App\Clients\Middleware\RateLimitingMiddleware\HeaderRateLimiter\HeaderRateLimiterInterface;
 use Carbon\Carbon;
 use DateTimeInterface;
@@ -12,14 +11,13 @@ use Illuminate\Support\Facades\Cache;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
-class GitHubRateLimiterMiddleware extends AbstractRateLimiter implements HeaderRateLimiterInterface
+class GitHubRateLimiterMiddleware implements HeaderRateLimiterInterface
 {
-    const CACHE_KEY = 'github_rate_limiter';
-
     /**
      * @see https://docs.github.com/en/rest/search/search?apiVersion=2022-11-28
      */
     public function __construct(
+        protected readonly string $cacheKey,
         private readonly int $maxRateLimit = 10,
     ) {
         $this->initRateLimiter();
@@ -27,14 +25,14 @@ class GitHubRateLimiterMiddleware extends AbstractRateLimiter implements HeaderR
 
     private function initRateLimiter(): void
     {
-        if (!Cache::has(self::CACHE_KEY)) {
-            Cache::put(self::CACHE_KEY, $this->maxRateLimit);
+        if (!Cache::has($this->cacheKey)) {
+            Cache::put($this->cacheKey, $this->maxRateLimit);
         }
     }
 
     public function canMakeRequest(): bool
     {
-        return Cache::get(self::CACHE_KEY) > 0;
+        return Cache::get($this->cacheKey) > 0;
     }
 
     public function updateRateLimits(ResponseInterface $response): void
@@ -53,6 +51,6 @@ class GitHubRateLimiterMiddleware extends AbstractRateLimiter implements HeaderR
 
     public function setRemainingCalls(int $limit, DateTimeInterface $expirationDate): void
     {
-        Cache::put(self::CACHE_KEY, $limit, $expirationDate);
+        Cache::put($this->cacheKey, $limit, $expirationDate);
     }
 }

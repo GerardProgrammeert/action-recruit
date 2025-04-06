@@ -33,7 +33,7 @@ final readonly class GoogleSearchResultValueObject implements Arrayable
         ];
     }
 
-    private static function getLink(string $link): ?string
+    public static function getLink(string $link): ?string
     {
         if (!filter_var($link, FILTER_VALIDATE_URL)) {
             return null;

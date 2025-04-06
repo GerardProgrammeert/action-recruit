@@ -32,6 +32,31 @@ class ProfileFactory extends Factory
         ];
     }
 
+    public function unProccesed(): Factory
+    {
+        return $this->state(function () {
+            return [
+                'location' => null,
+                'hireable' => null,
+                'name' => null,
+                'email' => null,
+                'twitter_username' => null,
+                'blog' => null,
+                'linkedin_links' => null,
+                'is_fetched' => false,
+            ];
+        });
+    }
+
+    public function gitHubEnriched(): Factory
+    {
+        return $this->state(function () {
+            return [
+                'linkedin_links' => null,
+            ];
+        });
+    }
+
     /**
      * @return array<int, string>
      */

@@ -127,7 +127,7 @@ class ProfilesDataTable extends DataTable
     }
 
     /** @noinspection PhpUnused */
-    private function getFilteredLink(string $url): ?string
+    protected function getFilteredLink(string $url): ?string
     {
         if (Str::contains($url, '/nl.', true)) {
             return $this->getLink($url);

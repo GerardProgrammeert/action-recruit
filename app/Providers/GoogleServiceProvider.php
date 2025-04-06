@@ -19,8 +19,8 @@ class GoogleServiceProvider extends ServiceProvider
                     'baseUrl' =>  env('GOOGLE_API_URL'),
                     'apiKey' => env('GOOGLE_API_KEY'),
                     'cseId' => env('GOOGLE_CSE_ID'),
+                    'cacheKey' => env('GOOGLE_CACHE_KEY_RATE_LIMITER'),
                 ];
-
                 if ($this->app->environment('testing')) {
                     return (new FakeClientFactory(...$args))->make();
                 }

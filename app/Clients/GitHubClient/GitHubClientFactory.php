@@ -19,8 +19,7 @@ final class GitHubClientFactory extends AbstractClientFactory implements ClientF
 
         $handler = new CurlHandler();
         $stack->setHandler($handler);
-
-        $rateLimiter = new GitHubRateLimiterMiddleware();
+        $rateLimiter = new GitHubRateLimiterMiddleware($this->cacheKey);
         $middleware = app()->makeWith(GitHubMiddleware::class, ['rateLimiter' => $rateLimiter]);
 
         $stack->push($middleware);

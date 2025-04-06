@@ -10,8 +10,12 @@ use GuzzleHttp\Psr7\Request;
 
 abstract class AbstractClientFactory
 {
-    public function __construct(protected string $baseUrl, protected string $apiKey, protected string $cseId)
-    {
+    public function __construct(
+        protected string $baseUrl,
+        protected string $apiKey,
+        protected string $cseId,
+        protected string $cacheKey,
+    ) {
     }
 
     public function make(): ClientInterface
