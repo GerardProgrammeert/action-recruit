@@ -1,0 +1,581 @@
+{
+    "kind": "customsearch#search",
+    "url": {
+        "type": "application/json",
+        "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+        "request": [
+            {
+                "title": "Google Custom Search - Petra Dreiskämper netherlands site:linkedin.com",
+                "totalResults": "10",
+                "searchTerms": "Petra Dreiskämper netherlands site:linkedin.com",
+                "count": 10,
+                "startIndex": 1,
+                "inputEncoding": "utf8",
+                "outputEncoding": "utf8",
+                "safe": "off",
+                "cx": "c04e693fab37347d6"
+            }
+        ]
+    },
+    "context": {
+        "title": "Linkedin"
+    },
+    "searchInformation": {
+        "searchTime": 0.152249,
+        "formattedSearchTime": "0.15",
+        "totalResults": "10",
+        "formattedTotalResults": "10"
+    },
+    "items": [
+        {
+            "kind": "customsearch#result",
+            "title": "Petra Dreiskämper - Grobbel & Dreis | LinkedIn",
+            "htmlTitle": "\u003cb\u003ePetra Dreiskämper\u003c/b\u003e - Grobbel &amp; Dreis | LinkedIn",
+            "link": "https://nl.linkedin.com/in/dreis",
+            "displayLink": "nl.linkedin.com",
+            "snippet": "... Petra Dreiskämper op LinkedIn, een professionele community van 1 miljard leden ... Amsterdam, North Holland, Netherlands. -. -. -. Opleiding. Universiteit Utrecht ...",
+            "htmlSnippet": "... \u003cb\u003ePetra Dreiskämper\u003c/b\u003e op LinkedIn, een professionele community van 1 miljard leden ... Amsterdam, North \u003cb\u003eHolland\u003c/b\u003e, \u003cb\u003eNetherlands\u003c/b\u003e. -. -. -. Opleiding. Universiteit Utrecht&nbsp;...",
+            "formattedUrl": "https://nl.linkedin.com/in/dreis",
+            "htmlFormattedUrl": "https://nl.linkedin.com/in/dreis",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2fbxpa157CLISkxxg8y5T91uz_Ce8JOwwURrtdk2fPzMnkfFquJK3&s",
+                        "width": "96",
+                        "height": "96"
+                    }
+                ],
+                "metatags": [
+                    {
+                        "og:image": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png",
+                        "twitter:card": "summary",
+                        "linkedin:pagetag": "openToProvider",
+                        "platform-worker": "https://static.licdn.com/aero-v1/sc/h/7nirg34a8ey4y2l4rw7xgwxx4",
+                        "al:android:package": "com.linkedin.android",
+                        "bingbot": "nocache",
+                        "locale": "nl_NL",
+                        "al:ios:url": "https://nl.linkedin.com/in/dreis",
+                        "og:description": "After a short lived career as a historian and some basic-training in html and… · Ervaring: Grobbel &amp; Dreis · Opleiding: Universiteit Utrecht · Locatie: Utrecht · 414 connecties op LinkedIn. Bekijk het profiel van Petra Dreiskämper op LinkedIn, een professionele community van 1 miljard leden.",
+                        "al:ios:app_store_id": "288429040",
+                        "platform": "https://static.licdn.com/aero-v1/sc/h/exkw4l4akgsym3om6tnupboq6",
+                        "twitter:image": "https://static.licdn.com/aero-v1/sc/h/1c5u578iilxfi4m4dvc4q810q",
+                        "profile:last_name": "Dreiskämper",
+                        "twitter:site": "@Linkedin",
+                        "litmsprofilename": "public-profile-frontend",
+                        "profile:first_name": "Petra",
+                        "og:type": "profile",
+                        "twitter:title": "Petra Dreiskämper - Grobbel &amp; Dreis | LinkedIn",
+                        "al:ios:app_name": "LinkedIn",
+                        "og:title": "Petra Dreiskämper - Grobbel &amp; Dreis | LinkedIn",
+                        "pagekey": "public_profile_v3_mobile",
+                        "al:android:url": "https://nl.linkedin.com/in/dreis",
+                        "viewport": "width=device-width, initial-scale=1.0",
+                        "twitter:description": "After a short lived career as a historian and some basic-training in html and… · Ervaring: Grobbel &amp; Dreis · Opleiding: Universiteit Utrecht · Locatie: Utrecht · 414 connecties op LinkedIn. Bekijk het profiel van Petra Dreiskämper op LinkedIn, een professionele community van 1 miljard leden.",
+                        "ubba": "https://static.licdn.com/aero-v1/sc/h/dlxevueaszn1k5tiemxu7kmqy",
+                        "og:url": "https://nl.linkedin.com/in/dreis",
+                        "al:android:app_name": "LinkedIn"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png"
+                    }
+                ],
+                "Person": [
+                    {}
+                ]
+            }
+        },
+        {
+            "kind": "customsearch#result",
+            "title": "10+ \"Dreiskamper\" profiles | LinkedIn",
+            "htmlTitle": "10+ &quot;Dreiskamper&quot; profiles | LinkedIn",
+            "link": "https://www.linkedin.com/pub/dir/+/Dreiskamper",
+            "displayLink": "www.linkedin.com",
+            "snippet": "10+Results for \"Dreiskamper\" · Lukas Dreiskamper · Niklas D. · Oliver Dreiskämper · Sebastian Dreiskämper · André Dreiskämper · Jonas Dreiskämper · Petra Dreiskämper.",
+            "htmlSnippet": "10+Results for &quot;Dreiskamper&quot; &middot; Lukas Dreiskamper &middot; Niklas D. &middot; Oliver \u003cb\u003eDreiskämper\u003c/b\u003e &middot; Sebastian \u003cb\u003eDreiskämper\u003c/b\u003e &middot; André \u003cb\u003eDreiskämper\u003c/b\u003e &middot; Jonas \u003cb\u003eDreiskämper\u003c/b\u003e &middot; \u003cb\u003ePetra Dreiskämper\u003c/b\u003e.",
+            "formattedUrl": "https://www.linkedin.com/pub/dir/+/Dreiskamper",
+            "htmlFormattedUrl": "https://www.linkedin.com/pub/dir/+/Dreiskamper",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2fbxpa157CLISkxxg8y5T91uz_Ce8JOwwURrtdk2fPzMnkfFquJK3&s",
+                        "width": "96",
+                        "height": "96"
+                    }
+                ],
+                "metatags": [
+                    {
+                        "og:image": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png",
+                        "og:type": "article",
+                        "twitter:card": "summary",
+                        "twitter:title": "10+ &quot;Dreiskamper&quot; profiles | LinkedIn",
+                        "clientsideingraphs": "1",
+                        "og:title": "10+ &quot;Dreiskamper&quot; profiles | LinkedIn",
+                        "pagekey": "p_people_guest_search",
+                        "locale": "en_US",
+                        "og:description": "View the profiles of professionals named &quot;Dreiskamper&quot; on LinkedIn. There are 10+ professionals named &quot;Dreiskamper&quot;, who use LinkedIn to exchange information, ideas, and opportunities.",
+                        "twitter:image": "https://static.licdn.com/aero-v1/sc/h/3usjoqttpyv7mplawrjzi58bw",
+                        "twitter:site": "@linkedin",
+                        "viewport": "width=device-width, initial-scale=1.0",
+                        "twitter:description": "View the profiles of professionals named &quot;Dreiskamper&quot; on LinkedIn. There are 10+ professionals named &quot;Dreiskamper&quot;, who use LinkedIn to exchange information, ideas, and opportunities.",
+                        "litmsprofilename": "people-guest-frontend",
+                        "og:url": "https://www.linkedin.com/pub/dir/+/Dreiskamper"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png"
+                    }
+                ]
+            }
+        },
+        {
+            "kind": "customsearch#result",
+            "title": "“PHP 7 Has Done Wonders For The Language”, Says Stefan ...",
+            "htmlTitle": "“PHP 7 Has Done Wonders For The Language”, Says Stefan ...",
+            "link": "https://www.linkedin.com/pulse/php-7-has-done-wonders-language-says-stefan-phpbenelux-ahmed-khan",
+            "displayLink": "www.linkedin.com",
+            "snippet": "May 23, 2016 ... The most important ones have been Petra Dreiskämper (I've known her ... Stefan: My first conference speaking experience was the very first Dutch ...",
+            "htmlSnippet": "May 23, 2016 \u003cb\u003e...\u003c/b\u003e The most important ones have been \u003cb\u003ePetra Dreiskämper\u003c/b\u003e (I&#39;ve known her ... Stefan: My first conference speaking experience was the very first \u003cb\u003eDutch\u003c/b\u003e&nbsp;...",
+            "formattedUrl": "https://www.linkedin.com/.../php-7-has-done-wonders-language-says-stefan...",
+            "htmlFormattedUrl": "https://www.linkedin.com/.../php-7-has-done-wonders-language-says-stefan...",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2fbxpa157CLISkxxg8y5T91uz_Ce8JOwwURrtdk2fPzMnkfFquJK3&s",
+                        "width": "96",
+                        "height": "96"
+                    }
+                ],
+                "metatags": [
+                    {
+                        "og:image": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png",
+                        "twitter:card": "summary_large_image",
+                        "clientsideingraphs": "1",
+                        "al:android:package": "com.linkedin.android",
+                        "twitter:label1": "Written by",
+                        "twitter:label2": "Reading time",
+                        "bingbot": "nocache",
+                        "locale": "en_US",
+                        "al:ios:url": "https://www.linkedin.com/pulse/php-7-has-done-wonders-language-says-stefan-phpbenelux-ahmed-khan",
+                        "og:description": "This interview was originally published on Cloudways Stefan is the co-founder of PHPBenelux and speaker of many PHP conference around the world. He has a vast experience of development.",
+                        "al:ios:app_store_id": "288429040",
+                        "twitter:image": "https://media.licdn.com/dms/image/v2/C5112AQFjHpvplh0MIA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1520123973396?e=2147483647&v=beta&t=opRICXhnY7K8U8qdpdCb4PYeWJNW0FLk-fuWe5Z5qtg",
+                        "twitter:data1": "Ahmed Khan",
+                        "twitter:data2": "4 min read",
+                        "twitter:site": "@LinkedInEditors",
+                        "og:type": "article",
+                        "twitter:title": "“PHP 7 Has Done Wonders For The Language”, Says Stefan Koopmanschap Of PHPBenelux",
+                        "al:ios:app_name": "LinkedIn",
+                        "og:title": "“PHP 7 Has Done Wonders For The Language”, Says Stefan Koopmanschap Of PHPBenelux",
+                        "pagekey": "p_flagship2_pulse_read",
+                        "al:android:url": "https://www.linkedin.com/pulse/php-7-has-done-wonders-language-says-stefan-phpbenelux-ahmed-khan",
+                        "viewport": "width=device-width, initial-scale=1.0",
+                        "twitter:description": "This interview was originally published on Cloudways Stefan is the co-founder of PHPBenelux and speaker of many PHP conference around the world. He has a vast experience of development.",
+                        "og:url": "https://www.linkedin.com/pulse/php-7-has-done-wonders-language-says-stefan-phpbenelux-ahmed-khan",
+                        "al:android:app_name": "LinkedIn"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png"
+                    }
+                ]
+            }
+        },
+        {
+            "kind": "customsearch#result",
+            "title": "Menno Den Engelse - Owner - Islands of Meaning | LinkedIn",
+            "htmlTitle": "Menno Den Engelse - Owner - Islands of Meaning | LinkedIn",
+            "link": "https://nl.linkedin.com/in/denengelse",
+            "displayLink": "nl.linkedin.com",
+            "snippet": "International Workshop Population Reconstruction, Amsterdam, The Netherlands ... Petra Dreiskämper · Job Spierings · Rutger van Willigen · Project weergeven ...",
+            "htmlSnippet": "International Workshop Population Reconstruction, Amsterdam, The \u003cb\u003eNetherlands\u003c/b\u003e ... \u003cb\u003ePetra Dreiskämper\u003c/b\u003e &middot; Job Spierings &middot; Rutger van Willigen &middot; Project weergeven&nbsp;...",
+            "formattedUrl": "https://nl.linkedin.com/in/denengelse",
+            "htmlFormattedUrl": "https://nl.linkedin.com/in/denengelse",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2fbxpa157CLISkxxg8y5T91uz_Ce8JOwwURrtdk2fPzMnkfFquJK3&s",
+                        "width": "96",
+                        "height": "96"
+                    }
+                ],
+                "ProfilePage": [
+                    {}
+                ],
+                "metatags": [
+                    {
+                        "og:image": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png",
+                        "twitter:card": "summary",
+                        "linkedin:pagetag": "openToProvider",
+                        "platform-worker": "https://static.licdn.com/aero-v1/sc/h/7nirg34a8ey4y2l4rw7xgwxx4",
+                        "al:android:package": "com.linkedin.android",
+                        "bingbot": "nocache",
+                        "locale": "nl_NL",
+                        "al:ios:url": "https://nl.linkedin.com/in/denengelse",
+                        "og:description": "Cultural Heritage | Linked Data · Momenteel werkzaam als stratenmaker voor diverse archiefinstellingen. Ook: kantoortuinier. · Ervaring: Islands of Meaning · Opleiding: Leiden University · Locatie: Amsterdam · 388 connecties op LinkedIn. Bekijk het profiel van Menno Den Engelse op LinkedIn, een professionele community van 1 miljard leden.",
+                        "al:ios:app_store_id": "288429040",
+                        "platform": "https://static.licdn.com/aero-v1/sc/h/exkw4l4akgsym3om6tnupboq6",
+                        "twitter:image": "https://static.licdn.com/aero-v1/sc/h/1c5u578iilxfi4m4dvc4q810q",
+                        "profile:last_name": "Den Engelse",
+                        "twitter:site": "@Linkedin",
+                        "litmsprofilename": "public-profile-frontend",
+                        "profile:first_name": "Menno",
+                        "og:type": "profile",
+                        "twitter:title": "Menno Den Engelse - Owner - Islands of Meaning | LinkedIn",
+                        "al:ios:app_name": "LinkedIn",
+                        "og:title": "Menno Den Engelse - Owner - Islands of Meaning | LinkedIn",
+                        "pagekey": "public_profile_v3_mobile",
+                        "al:android:url": "https://nl.linkedin.com/in/denengelse",
+                        "viewport": "width=device-width, initial-scale=1.0",
+                        "twitter:description": "Cultural Heritage | Linked Data · Momenteel werkzaam als stratenmaker voor diverse archiefinstellingen. Ook: kantoortuinier. · Ervaring: Islands of Meaning · Opleiding: Leiden University · Locatie: Amsterdam · 388 connecties op LinkedIn. Bekijk het profiel van Menno Den Engelse op LinkedIn, een professionele community van 1 miljard leden.",
+                        "ubba": "https://static.licdn.com/aero-v1/sc/h/dlxevueaszn1k5tiemxu7kmqy",
+                        "og:url": "https://nl.linkedin.com/in/denengelse",
+                        "al:android:app_name": "LinkedIn"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png"
+                    }
+                ]
+            }
+        },
+        {
+            "kind": "customsearch#result",
+            "title": "#netherlands3d #amsterdamtimemachine #digitaltwin #innovatie ...",
+            "htmlTitle": "#netherlands3d #amsterdamtimemachine #digitaltwin #innovatie ...",
+            "link": "https://nl.linkedin.com/posts/mvriel_netherlands3d-amsterdamtimemachine-digitaltwin-activity-7276984503640752128-XtZ1",
+            "displayLink": "nl.linkedin.com",
+            "snippet": "Dec 23, 2024 ... Bijdrage van Mike van Riel ... Kers op de taart was dat Petra Dreiskämper erbij was, het was zo leuk om weer even bij te praten. Dank je Ingeborg ...",
+            "htmlSnippet": "Dec 23, 2024 \u003cb\u003e...\u003c/b\u003e Bijdrage van Mike van Riel ... Kers op de taart was dat \u003cb\u003ePetra Dreiskämper\u003c/b\u003e erbij was, het was zo leuk om weer even bij te praten. Dank je Ingeborg&nbsp;...",
+            "formattedUrl": "https://nl.linkedin.com/.../mvriel_netherlands3d-amsterdamtimemachine-di...",
+            "htmlFormattedUrl": "https://nl.linkedin.com/.../mvriel_\u003cb\u003enetherlands\u003c/b\u003e3d-amsterdamtimemachine-di...",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS04e6O-tyJP3OX9IZl1rVoeJXgR-0OEPqbCRoTI_lapUHJYdpd6388lCs7&s",
+                        "width": "259",
+                        "height": "194"
+                    }
+                ],
+                "metatags": [
+                    {
+                        "og:image": "https://media.licdn.com/dms/image/v2/D4E22AQE-f3XOtzjIoA/feedshare-shrink_800/B4EZP0K1bMHgAk-/0/1734968303881?e=2147483647&v=beta&t=p98tpmDJXAQuZPaawBNiQMKo35pQRD2g1l5mJum9TOQ",
+                        "twitter:title": "#netherlands3d #amsterdamtimemachine #digitaltwin #innovatie… | Mike van Riel",
+                        "twitter:card": "summary_large_image",
+                        "og:type": "article",
+                        "al:ios:app_name": "LinkedIn",
+                        "twitter:url": "https://nl.linkedin.com/posts/mvriel_netherlands3d-amsterdamtimemachine-digitaltwin-activity-7276984503640752128-XtZ1",
+                        "og:title": "#netherlands3d #amsterdamtimemachine #digitaltwin #innovatie… | Mike van Riel",
+                        "al:android:package": "com.linkedin.android",
+                        "pagekey": "p_public_post",
+                        "locale": "nl_NL",
+                        "al:ios:url": "https://nl.linkedin.com/posts/mvriel_netherlands3d-amsterdamtimemachine-digitaltwin-activity-7276984503640752128-XtZ1",
+                        "og:description": "Afgelopen woensdag mocht ik samen met het Netherlands3D-team de pilot van de Amsterdam Time Machine -in 3D- presenteren bij de Universiteit van Amsterdam. Wat een geweldige ervaring! ✨\n\nHet was een project waar we met het hele team ontzettend veel van hebben geleerd, en om het dan eindelijk te mogen laten zien aan een zaal vol nieuwsgierige en enthousiaste mensen, was echt bijzonder. De reacties waren fantastisch: veel vragen, nieuwe ideeën en zelfs een paar glimmende ogen bij het zien van wat er mogelijk is als je geschiedenis en een 3D-omgeving combineert.\n\nIk ben enorm trots op wat we als team hebben neergezet en hoe dit project laat zien dat technologie en erfgoed elkaar prachtig kunnen versterken.\n\nDank aan iedereen die erbij was en met ons meedacht! 🙌\n\n#Netherlands3D #AmsterdamTimeMachine #DigitalTwin #Innovatie #3DTechnologie #Erfgoed",
+                        "al:ios:app_store_id": "288429040",
+                        "twitter:image": "https://media.licdn.com/dms/image/v2/D4E22AQE-f3XOtzjIoA/feedshare-shrink_800/B4EZP0K1bMHgAk-/0/1734968303881?e=2147483647&v=beta&t=p98tpmDJXAQuZPaawBNiQMKo35pQRD2g1l5mJum9TOQ",
+                        "al:android:url": "https://nl.linkedin.com/posts/mvriel_netherlands3d-amsterdamtimemachine-digitaltwin-activity-7276984503640752128-XtZ1",
+                        "lnkd:url": "https://nl.linkedin.com/feed/update/urn:li:activity:7276984503640752128",
+                        "twitter:site": "@linkedin",
+                        "viewport": "width=device-width, initial-scale=1.0",
+                        "twitter:description": "Afgelopen woensdag mocht ik samen met het Netherlands3D-team de pilot van de Amsterdam Time Machine -in 3D- presenteren bij de Universiteit van Amsterdam. Wat een geweldige ervaring! ✨\n\nHet was een project waar we met het hele team ontzettend veel van hebben geleerd, en om het dan eindelijk te mogen laten zien aan een zaal vol nieuwsgierige en enthousiaste mensen, was echt bijzonder. De reacties waren fantastisch: veel vragen, nieuwe ideeën en zelfs een paar glimmende ogen bij het zien van wat er mogelijk is als je geschiedenis en een 3D-omgeving combineert.\n\nIk ben enorm trots op wat we als team hebben neergezet en hoe dit project laat zien dat technologie en erfgoed elkaar prachtig kunnen versterken.\n\nDank aan iedereen die erbij was en met ons meedacht! 🙌\n\n#Netherlands3D #AmsterdamTimeMachine #DigitalTwin #Innovatie #3DTechnologie #Erfgoed",
+                        "og:url": "https://nl.linkedin.com/posts/mvriel_netherlands3d-amsterdamtimemachine-digitaltwin-activity-7276984503640752128-XtZ1",
+                        "al:android:app_name": "LinkedIn"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://media.licdn.com/dms/image/v2/D4E22AQE-f3XOtzjIoA/feedshare-shrink_800/B4EZP0K1bMHgAk-/0/1734968303881?e=2147483647&v=beta&t=p98tpmDJXAQuZPaawBNiQMKo35pQRD2g1l5mJum9TOQ"
+                    }
+                ]
+            }
+        },
+        {
+            "kind": "customsearch#result",
+            "title": "Stephan de Prouw - Den Haag, Zuid-Holland, Nederland ...",
+            "htmlTitle": "Stephan de Prouw - Den Haag, Zuid-\u003cb\u003eHolland\u003c/b\u003e, Nederland ...",
+            "link": "https://nl.linkedin.com/in/stephan-de-prouw-9b97532",
+            "displayLink": "nl.linkedin.com",
+            "snippet": "Dutch. Moedertaal of tweetalig. French. Beperkte werkvaardigheid. German ... Petra Dreiskämper. 'Steef is a very good designer, photoshop master, (x)html ...",
+            "htmlSnippet": "\u003cb\u003eDutch\u003c/b\u003e. Moedertaal of tweetalig. French. Beperkte werkvaardigheid. German ... \u003cb\u003ePetra Dreiskämper\u003c/b\u003e. &#39;Steef is a very good designer, photoshop master, (x)html&nbsp;...",
+            "formattedUrl": "https://nl.linkedin.com/in/stephan-de-prouw-9b97532",
+            "htmlFormattedUrl": "https://nl.linkedin.com/in/stephan-de-prouw-9b97532",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2fbxpa157CLISkxxg8y5T91uz_Ce8JOwwURrtdk2fPzMnkfFquJK3&s",
+                        "width": "96",
+                        "height": "96"
+                    }
+                ],
+                "metatags": [
+                    {
+                        "og:image": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png",
+                        "twitter:card": "summary",
+                        "linkedin:pagetag": "openToProvider",
+                        "platform-worker": "https://static.licdn.com/aero-v1/sc/h/7nirg34a8ey4y2l4rw7xgwxx4",
+                        "al:android:package": "com.linkedin.android",
+                        "bingbot": "nocache",
+                        "locale": "nl_NL",
+                        "al:ios:url": "https://nl.linkedin.com/in/stephan-de-prouw-9b97532",
+                        "og:description": "Den Haag · 364 connecties op LinkedIn. Bekijk het profiel van Stephan de Prouw op LinkedIn, een professionele community van 1 miljard leden.",
+                        "al:ios:app_store_id": "288429040",
+                        "platform": "https://static.licdn.com/aero-v1/sc/h/605l7zutb83igfwaondc29mpa",
+                        "twitter:image": "https://static.licdn.com/aero-v1/sc/h/1c5u578iilxfi4m4dvc4q810q",
+                        "profile:last_name": "de Prouw",
+                        "twitter:site": "@Linkedin",
+                        "litmsprofilename": "public-profile-frontend",
+                        "profile:first_name": "Stephan",
+                        "og:type": "profile",
+                        "twitter:title": "Stephan de Prouw - Den Haag, Zuid-Holland, Nederland | Professioneel profiel | LinkedIn",
+                        "al:ios:app_name": "LinkedIn",
+                        "og:title": "Stephan de Prouw - Den Haag, Zuid-Holland, Nederland | Professioneel profiel | LinkedIn",
+                        "pagekey": "public_profile_v3_mobile",
+                        "al:android:url": "https://nl.linkedin.com/in/stephan-de-prouw-9b97532",
+                        "viewport": "width=device-width, initial-scale=1.0",
+                        "twitter:description": "Den Haag · 364 connecties op LinkedIn. Bekijk het profiel van Stephan de Prouw op LinkedIn, een professionele community van 1 miljard leden.",
+                        "ubba": "https://static.licdn.com/aero-v1/sc/h/70fqp3qjzbjqjky3ui69jezo2",
+                        "og:url": "https://nl.linkedin.com/in/stephan-de-prouw-9b97532",
+                        "al:android:app_name": "LinkedIn"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png"
+                    }
+                ]
+            }
+        },
+        {
+            "kind": "customsearch#result",
+            "title": "Joop Vanderheiden - Rijksdienst voor het Cultureel Erfgoed | LinkedIn",
+            "htmlTitle": "Joop Vanderheiden - Rijksdienst voor het Cultureel Erfgoed | LinkedIn",
+            "link": "https://nl.linkedin.com/in/jvand64",
+            "displayLink": "nl.linkedin.com",
+            "snippet": "Eindhoven Area, Netherlands. Opleiding. Hasso Plattner Institute grafisch ... Petra Dreiskämper · Bert Spaan · Menno Den Engelse · Job Spierings · Rutger van ...",
+            "htmlSnippet": "Eindhoven Area, \u003cb\u003eNetherlands\u003c/b\u003e. Opleiding. Hasso Plattner Institute grafisch ... \u003cb\u003ePetra Dreiskämper\u003c/b\u003e &middot; Bert Spaan &middot; Menno Den Engelse &middot; Job Spierings &middot; Rutger van&nbsp;...",
+            "formattedUrl": "https://nl.linkedin.com/in/jvand64",
+            "htmlFormattedUrl": "https://nl.linkedin.com/in/jvand64",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2fbxpa157CLISkxxg8y5T91uz_Ce8JOwwURrtdk2fPzMnkfFquJK3&s",
+                        "width": "96",
+                        "height": "96"
+                    }
+                ],
+                "metatags": [
+                    {
+                        "og:image": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png",
+                        "twitter:card": "summary",
+                        "linkedin:pagetag": "openToProvider",
+                        "platform-worker": "https://static.licdn.com/aero-v1/sc/h/7nirg34a8ey4y2l4rw7xgwxx4",
+                        "al:android:package": "com.linkedin.android",
+                        "bingbot": "nocache",
+                        "locale": "nl_NL",
+                        "al:ios:url": "https://nl.linkedin.com/in/jvand64",
+                        "og:description": "I&#39;m an experienced Linked Open Data Modeler with a strong background in government… · Ervaring: Rijksdienst voor het Cultureel Erfgoed · Opleiding: Hasso Plattner Institute · Locatie: Amersfoort · 500+ connecties op LinkedIn. Bekijk het profiel van Joop Vanderheiden op LinkedIn, een professionele community van 1 miljard leden.",
+                        "al:ios:app_store_id": "288429040",
+                        "platform": "https://static.licdn.com/aero-v1/sc/h/exkw4l4akgsym3om6tnupboq6",
+                        "twitter:image": "https://static.licdn.com/aero-v1/sc/h/1c5u578iilxfi4m4dvc4q810q",
+                        "profile:last_name": "Vanderheiden",
+                        "twitter:site": "@Linkedin",
+                        "litmsprofilename": "public-profile-frontend",
+                        "profile:first_name": "Joop",
+                        "og:type": "profile",
+                        "twitter:title": "Joop Vanderheiden - Rijksdienst voor het Cultureel Erfgoed | LinkedIn",
+                        "al:ios:app_name": "LinkedIn",
+                        "og:title": "Joop Vanderheiden - Rijksdienst voor het Cultureel Erfgoed | LinkedIn",
+                        "pagekey": "public_profile_v3_mobile",
+                        "al:android:url": "https://nl.linkedin.com/in/jvand64",
+                        "viewport": "width=device-width, initial-scale=1.0",
+                        "twitter:description": "I&#39;m an experienced Linked Open Data Modeler with a strong background in government… · Ervaring: Rijksdienst voor het Cultureel Erfgoed · Opleiding: Hasso Plattner Institute · Locatie: Amersfoort · 500+ connecties op LinkedIn. Bekijk het profiel van Joop Vanderheiden op LinkedIn, een professionele community van 1 miljard leden.",
+                        "ubba": "https://static.licdn.com/aero-v1/sc/h/dlxevueaszn1k5tiemxu7kmqy",
+                        "og:url": "https://nl.linkedin.com/in/jvand64",
+                        "al:android:app_name": "LinkedIn"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png"
+                    }
+                ],
+                "Person": [
+                    {}
+                ]
+            }
+        },
+        {
+            "kind": "customsearch#result",
+            "title": "Ivo Zandhuis - Consultant Digital Cultural Heritage - Freelance ...",
+            "htmlTitle": "Ivo Zandhuis - Consultant Digital Cultural Heritage - Freelance ...",
+            "link": "https://nl.linkedin.com/in/ivozandhuis",
+            "displayLink": "nl.linkedin.com",
+            "snippet": "jun. 2020 - heden 4 jaar 11 maanden. Amsterdam, North Holland, Netherlands ... Petra Dreiskämper · Menno Den Engelse · Edward Mac Gillavry · Project weergeven ...",
+            "htmlSnippet": "jun. 2020 - heden 4 jaar 11 maanden. Amsterdam, North \u003cb\u003eHolland\u003c/b\u003e, \u003cb\u003eNetherlands\u003c/b\u003e ... \u003cb\u003ePetra Dreiskämper\u003c/b\u003e &middot; Menno Den Engelse &middot; Edward Mac Gillavry &middot; Project weergeven&nbsp;...",
+            "formattedUrl": "https://nl.linkedin.com/in/ivozandhuis",
+            "htmlFormattedUrl": "https://nl.linkedin.com/in/ivozandhuis",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2fbxpa157CLISkxxg8y5T91uz_Ce8JOwwURrtdk2fPzMnkfFquJK3&s",
+                        "width": "96",
+                        "height": "96"
+                    }
+                ],
+                "ProfilePage": [
+                    {}
+                ],
+                "metatags": [
+                    {
+                        "og:image": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png",
+                        "twitter:card": "summary",
+                        "linkedin:pagetag": "openToProvider",
+                        "platform-worker": "https://static.licdn.com/aero-v1/sc/h/7nirg34a8ey4y2l4rw7xgwxx4",
+                        "al:android:package": "com.linkedin.android",
+                        "bingbot": "nocache",
+                        "locale": "nl_NL",
+                        "al:ios:url": "https://nl.linkedin.com/in/ivozandhuis",
+                        "og:description": "Consultant Digital Cultural Heritage · Ervaring: Freelance · Opleiding: Erasmus University Rotterdam · Locatie: Amsterdam · 500+ connecties op LinkedIn. Bekijk het profiel van Ivo Zandhuis op LinkedIn, een professionele community van 1 miljard leden.",
+                        "al:ios:app_store_id": "288429040",
+                        "platform": "https://static.licdn.com/aero-v1/sc/h/exkw4l4akgsym3om6tnupboq6",
+                        "twitter:image": "https://media.licdn.com/dms/image/v2/D4E03AQF2eQBHigA6Cg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1665223251721?e=2147483647&v=beta&t=QQ8ufWkRjNnOQnR0BQZ4rhIy2JhiS6CKzXwQ2ONLJmc",
+                        "profile:last_name": "Zandhuis",
+                        "twitter:site": "@Linkedin",
+                        "litmsprofilename": "public-profile-frontend",
+                        "profile:first_name": "Ivo",
+                        "og:type": "profile",
+                        "twitter:title": "Ivo Zandhuis - Consultant Digital Cultural Heritage - Freelance | LinkedIn",
+                        "al:ios:app_name": "LinkedIn",
+                        "og:title": "Ivo Zandhuis - Consultant Digital Cultural Heritage - Freelance | LinkedIn",
+                        "pagekey": "public_profile_v3_mobile",
+                        "al:android:url": "https://nl.linkedin.com/in/ivozandhuis",
+                        "viewport": "width=device-width, initial-scale=1.0",
+                        "twitter:description": "Consultant Digital Cultural Heritage · Ervaring: Freelance · Opleiding: Erasmus University Rotterdam · Locatie: Amsterdam · 500+ connecties op LinkedIn. Bekijk het profiel van Ivo Zandhuis op LinkedIn, een professionele community van 1 miljard leden.",
+                        "ubba": "https://static.licdn.com/aero-v1/sc/h/dlxevueaszn1k5tiemxu7kmqy",
+                        "og:url": "https://nl.linkedin.com/in/ivozandhuis",
+                        "al:android:app_name": "LinkedIn"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png"
+                    }
+                ]
+            }
+        },
+        {
+            "kind": "customsearch#result",
+            "title": "Heel trots dat de Radboud Universiteit me de Radboud Science ...",
+            "htmlTitle": "Heel trots dat de Radboud Universiteit me de Radboud Science ...",
+            "link": "https://nl.linkedin.com/posts/coen-van-galen-8631482a_heel-trots-dat-de-radboud-universiteit-me-activity-7239265858458451968-Tlw1",
+            "displayLink": "nl.linkedin.com",
+            "snippet": "Sep 10, 2024 ... ... Netherlands. The aim of this collaboration is to make all population ... Petra Dreiskämper. Cultural Heritage Expert- Software Developer ...",
+            "htmlSnippet": "Sep 10, 2024 \u003cb\u003e...\u003c/b\u003e ... \u003cb\u003eNetherlands\u003c/b\u003e. The aim of this collaboration is to make all population ... \u003cb\u003ePetra Dreiskämper\u003c/b\u003e. Cultural Heritage Expert- Software Developer&nbsp;...",
+            "formattedUrl": "https://nl.linkedin.com/.../coen-van-galen-8631482a_heel-trots-dat-de-radb...",
+            "htmlFormattedUrl": "https://nl.linkedin.com/.../coen-van-galen-8631482a_heel-trots-dat-de-radb...",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1lHyKnn88R9fu4ZZFv3V_0YdujpPuGiG3SQlwFLKyqYQVtNecQNanjTtR&s",
+                        "width": "201",
+                        "height": "251"
+                    }
+                ],
+                "metatags": [
+                    {
+                        "og:image": "https://media.licdn.com/dms/image/v2/D4E22AQFKFilOsOMFdA/feedshare-shrink_800/feedshare-shrink_800/0/1725975128047?e=2147483647&v=beta&t=jSkaQfo_RSGCmjre6buHMwWcj1m007g0whYrFPNqGTc",
+                        "twitter:title": "Heel trots dat de Radboud Universiteit me de Radboud Science Award heeft… | Coen van Galen | 61 commentaren",
+                        "twitter:card": "summary_large_image",
+                        "og:type": "article",
+                        "al:ios:app_name": "LinkedIn",
+                        "twitter:url": "https://nl.linkedin.com/posts/coen-van-galen-8631482a_heel-trots-dat-de-radboud-universiteit-me-activity-7239265858458451968-Tlw1",
+                        "og:title": "Heel trots dat de Radboud Universiteit me de Radboud Science Award heeft… | Coen van Galen | 61 commentaren",
+                        "al:android:package": "com.linkedin.android",
+                        "pagekey": "p_public_post",
+                        "locale": "nl_NL",
+                        "al:ios:url": "https://nl.linkedin.com/posts/coen-van-galen-8631482a_heel-trots-dat-de-radboud-universiteit-me-activity-7239265858458451968-Tlw1",
+                        "og:description": "Heel trots dat de Radboud Universiteit me de Radboud Science Award heeft toegekend voor het project Historische Database van Suriname en Curaçao. Meer… | 61 commentaren op LinkedIn",
+                        "al:ios:app_store_id": "288429040",
+                        "twitter:image": "https://media.licdn.com/dms/image/v2/D4E22AQFKFilOsOMFdA/feedshare-shrink_800/feedshare-shrink_800/0/1725975128047?e=2147483647&v=beta&t=jSkaQfo_RSGCmjre6buHMwWcj1m007g0whYrFPNqGTc",
+                        "al:android:url": "https://nl.linkedin.com/posts/coen-van-galen-8631482a_heel-trots-dat-de-radboud-universiteit-me-activity-7239265858458451968-Tlw1",
+                        "lnkd:url": "https://nl.linkedin.com/feed/update/urn:li:activity:7239265858458451968",
+                        "twitter:site": "@linkedin",
+                        "viewport": "width=device-width, initial-scale=1.0",
+                        "twitter:description": "Heel trots dat de Radboud Universiteit me de Radboud Science Award heeft toegekend voor het project Historische Database van Suriname en Curaçao. Meer… | 61 commentaren op LinkedIn",
+                        "og:url": "https://nl.linkedin.com/posts/coen-van-galen-8631482a_heel-trots-dat-de-radboud-universiteit-me-activity-7239265858458451968-Tlw1",
+                        "al:android:app_name": "LinkedIn"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://media.licdn.com/dms/image/v2/D4E22AQFKFilOsOMFdA/feedshare-shrink_800/feedshare-shrink_800/0/1725975128047?e=2147483647&v=beta&t=jSkaQfo_RSGCmjre6buHMwWcj1m007g0whYrFPNqGTc"
+                    }
+                ]
+            }
+        },
+        {
+            "kind": "customsearch#result",
+            "title": "Personen die beginnen met 'P' - pagina 45",
+            "htmlTitle": "Personen die beginnen met &#39;P&#39; - pagina 45",
+            "link": "https://nl.linkedin.com/directory/people/p-45",
+            "displayLink": "nl.linkedin.com",
+            "snippet": "Petra Dreiskämper · Petra Drenkelford - de Vos · Petra Drenth-Reus · Petra ... Petra Fust - van Holland · Petra Fysiotherapie.Hesterman · Petra Fühner - Nieborg ...",
+            "htmlSnippet": "\u003cb\u003ePetra Dreiskämper\u003c/b\u003e &middot; \u003cb\u003ePetra\u003c/b\u003e Drenkelford - de Vos &middot; \u003cb\u003ePetra\u003c/b\u003e Drenth-Reus &middot; \u003cb\u003ePetra\u003c/b\u003e ... \u003cb\u003ePetra\u003c/b\u003e Fust - van \u003cb\u003eHolland\u003c/b\u003e &middot; \u003cb\u003ePetra\u003c/b\u003e Fysiotherapie.Hesterman &middot; \u003cb\u003ePetra\u003c/b\u003e Fühner - Nieborg&nbsp;...",
+            "formattedUrl": "https://nl.linkedin.com/directory/people/p-45",
+            "htmlFormattedUrl": "https://nl.linkedin.com/directory/people/p-45",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2fbxpa157CLISkxxg8y5T91uz_Ce8JOwwURrtdk2fPzMnkfFquJK3&s",
+                        "width": "96",
+                        "height": "96"
+                    }
+                ],
+                "metatags": [
+                    {
+                        "og:image": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png",
+                        "og:type": "website",
+                        "twitter:card": "summary_large_image",
+                        "twitter:title": "Personen die beginnen met ‘P’ - pagina 45",
+                        "og:title": "Personen die beginnen met ‘P’ - pagina 45",
+                        "pagekey": "p_seo_directory_leaf",
+                        "locale": "nl_NL",
+                        "og:description": "Blader door personen die beginnen met de letter ‘P’ - pagina 45",
+                        "twitter:image": "/images/guest-house/banner.jpg",
+                        "twitter:site": "@LinkedIn",
+                        "viewport": "width=device-width, initial-scale=1.0",
+                        "twitter:description": "Blader door personen die beginnen met de letter ‘P’ - pagina 45",
+                        "og:url": "https://nl.linkedin.com/directory/people/p-45"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://static.licdn.com/scds/common/u/images/email/artdeco/logos/96/linkedin-bug-color.png"
+                    }
+                ],
+                "listitem": [
+                    {
+                        "item": "Lijst met personen",
+                        "name": "Lijst met personen",
+                        "position": "1"
+                    },
+                    {
+                        "item": "P",
+                        "name": "P",
+                        "position": "2"
+                    },
+                    {
+                        "name": "45",
+                        "position": "3"
+                    }
+                ]
+            }
+        }
+    ]
+}

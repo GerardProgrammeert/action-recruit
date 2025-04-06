@@ -14,9 +14,12 @@ class GoogleSearchJob extends AbstractProfileJob
         if (!$this->profile) {
             return;
         }
+        $this->start($this->profile->github_id);
 
         $response = $this->googleSearch($this->profile);
         (new StoreProfilesLinksAction())->execute($response->getValueObject(), $this->profile->github_id);
+
+        $this->finish($this->profile->github_id);
     }
 
     private function googleSearch(Profile $profile): GoogleSearchResponse

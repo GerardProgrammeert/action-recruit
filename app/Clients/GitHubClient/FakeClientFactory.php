@@ -6,13 +6,14 @@ use App\Clients\ClientInterface;
 use App\Clients\GuzzleClient;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
-use Tests\Feature\Fixtures\GitHub\FakeClient;
+use Tests\Feature\Fixtures\FakeClients\GitHub\GitHubFakeClient;
 
 class FakeClientFactory
 {
     public function __construct(private string $baseUrl, private string $apiKey)
     {
     }
+
     public function make(): ClientInterface
     {
         $client = new Client($this->settings());
@@ -41,7 +42,7 @@ class FakeClientFactory
     {
         $stack = HandlerStack::create();
 
-        $stack->setHandler(new FakeClient());
+        $stack->setHandler(new GitHubFakeClient());
 
         return $stack;
     }

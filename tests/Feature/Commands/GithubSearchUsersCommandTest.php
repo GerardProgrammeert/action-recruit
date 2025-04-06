@@ -3,7 +3,7 @@
 namespace Tests\Feature\Commands;
 
 use PHPUnit\Framework\Attributes\Test;
-use Tests\Feature\Fixtures\GitHub\FakeClient;
+use Tests\Feature\Fixtures\FakeClients\AbstractFakeClient;
 
 class GithubSearchUsersCommandTest extends CommandTest
 {
@@ -16,7 +16,25 @@ class GithubSearchUsersCommandTest extends CommandTest
             ->assertSuccessful()
             ->run();
 
-        $data = [
+        $this->assertDatabaseHas('profiles', $this->getData());
+    }
+
+    #[Test]
+    public function it_should_handle_exceptions(): void
+    {
+        AbstractFakeClient::fakeResponse(500,'',[],true);
+        $this->artisan('github:search-users "PHP"')
+            ->expectsOutput('Error occurred while fetching page 1: Internal Server Error')
+            ->assertExitCode(0);
+
+    }
+
+    /**
+     * @return array<string, int|string|null>
+     */
+    private function getData(): array
+    {
+        return [
             'github_id' => 15669080,
             'url' => 'https://api.github.com/users/PHPirates',
             'html_url' => 'https://github.com/PHPirates',
@@ -29,17 +47,5 @@ class GithubSearchUsersCommandTest extends CommandTest
             'is_fetched' => 0,
             'linkedin_links' => null,
         ];
-
-        $this->assertDatabaseHas('profiles', $data);
-    }
-
-    #[Test]
-    public function it_should_handle_exceptions(): void
-    {
-        FakeClient::fakeResponse(500,'',[],true);
-        $this->artisan('github:search-users "PHP"')
-            ->expectsOutput('Error occurred while fetching page 1: Internal Server Error')
-            ->assertExitCode(0);
-
     }
 }

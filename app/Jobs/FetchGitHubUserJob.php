@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Actions\Profile\UpdateProfileAction;
 use App\Services\GitHubServices;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class FetchGitHubUserJob extends AbstractProfileJob
@@ -17,15 +18,17 @@ class FetchGitHubUserJob extends AbstractProfileJob
         if (!$userName = $this->getUserName()) {
             return;
         }
+        $this->start($this->profile->github_id);
 
         $response = $service->getProfile($userName);
         $GitHubUserValueObject = $response->getValueObject();
-
         (new UpdateProfileAction())->execute($GitHubUserValueObject, true);
 
         if ($GitHubUserValueObject->getName()) {
             GoogleSearchJob::dispatch($GitHubUserValueObject->getGithubId());
         }
+
+        $this->finish($this->profile->github_id);
     }
 
     private function getUserName(): ?string

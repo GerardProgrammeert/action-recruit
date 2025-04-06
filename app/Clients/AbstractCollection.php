@@ -10,7 +10,7 @@ abstract class AbstractCollection extends Collection
     protected string $className;
 
     /**
-     *@param $items array<int, mixed>
+     *@param array<int, mixed> $items
      */
     public static function hydrate(array $items): static
     {

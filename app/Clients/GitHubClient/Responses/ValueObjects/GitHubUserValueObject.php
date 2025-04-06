@@ -19,7 +19,7 @@ final readonly class GitHubUserValueObject implements Arrayable
     }
 
     /**
-     *@param $data array<string, mixed>
+     *@param array<string, mixed> $data
      */
     public static function hydrate(array $data): self
     {

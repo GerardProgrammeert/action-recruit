@@ -1,8 +1,7 @@
 <?php
 
-namespace Tests\Feature\Fixtures\GitHub;
+namespace Tests\Feature\Fixtures\FakeClients;
 
-use App\Clients\GitHubClient\Enums\EndpointsEnum;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\FulfilledPromise;
 use GuzzleHttp\Promise\PromiseInterface;
@@ -16,22 +15,24 @@ use GuzzleHttp\Promise\Create;
 /**
  * @codeCoverageIgnore
  */
-final class FakeClient
+abstract class AbstractFakeClient
 {
-    private Collection $query;
+    protected Collection $query;
 
-    private string $method;
+    protected string $method;
 
-    private string $path;
+    protected string $path;
 
     /** @var array<string, mixed> */
-    private array $payload;
+    protected array $payload;
 
-    public static $nextResponse = null;
+    protected string $folderData;
 
-    public static $shouldThrow = false;
+    protected static $nextResponse = null;
 
-    private function setProperties(RequestInterface $request): void
+    protected static $shouldThrow = false;
+
+    protected function setProperties(RequestInterface $request): void
     {
         parse_str($request->getUri()->getQuery(), $query);
         $this->query = collect($query);
@@ -54,17 +55,12 @@ final class FakeClient
             return $getResponse;
         }
 
-        throw new LogicException("Github endpoint not faked: $this->method $this->path");
+        throw new LogicException("Endpoint not faked: $this->method $this->path");
     }
 
-    private function getGetResponse(): ?PromiseInterface
-    {
-        return match ($this->getKey()) {
-            EndpointsEnum::SEARCH_USERS->value => $this->getResponseFromFile('get-users-200'),
-        };
-    }
+    abstract protected function getGetResponse(): ?PromiseInterface;
 
-    private function getKey(): string
+    protected function getKey(): string
     {
         if ($this->query->get('filtervalues') && $this->query->get('filterfieldids')) {
             return $this->path . '|{id}';
@@ -73,7 +69,7 @@ final class FakeClient
         return '/' .$this->path;
     }
 
-    private function getPath(RequestInterface $request): string
+    protected function getPath(RequestInterface $request): string
     {
         $path = Str::after(rtrim($request->getUri()->getPath(), '/'), '/');
         $path = Str::replace(['404', '500'], ['{not-found}', '{fail}'], $path);
@@ -83,16 +79,14 @@ final class FakeClient
         return ltrim((string)preg_replace($numbersPattern, '/{id}', $path), '/');
     }
 
-    private function getResponseFromFile(string $fileName, int $statusCode = 200): FulfilledPromise
+    protected function getResponseFromFile(string $fileName, int $statusCode = 200): FulfilledPromise
     {
         // set variables based on the query parameters
         $query = $this->query->toArray();
         extract($query, EXTR_PREFIX_SAME, 'query');
-        // now `$email` exists, when the query was: ['email' => 'foo']
 
         $rootPath = dirname(__DIR__);
-
-        $json = file_get_contents( $rootPath . '/GitHub/Data/' . $fileName . '.json');
+        $json = file_get_contents( $rootPath . $this->folderData . '/' . $fileName . '.json');
 
         return new FulfilledPromise(
             new Response($statusCode, ['Content-Type' => 'application/json'], $json)

@@ -7,14 +7,14 @@ use Illuminate\Contracts\Support\Arrayable;
 final readonly class GoogleSearchResultValueObject implements Arrayable
 {
     /**
-     *@param $links array<int, string>
+     *@param array<int, string> $links
      */
     public function __construct(private array $links)
     {
     }
 
     /**
-     *@param $data array<int, <array<string, mixed>>>
+     *@param array<int, <array<string, mixed>>> $data
      */
     public static function hydrate(array $data): ?self
     {
