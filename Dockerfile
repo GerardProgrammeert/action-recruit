@@ -24,3 +24,11 @@ RUN apk add --no-cache \
 ARG UID=1000
 RUN adduser -D -u $UID -s /bin/bash php
 USER php
+
+WORKDIR /var/www/html
+COPY . /var/www/html
+
+RUN composer install --optimize-autoloader
+USER root
+RUN cp .env.example .env
+RUN php artisan key:generate
