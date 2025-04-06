@@ -2,27 +2,29 @@
 
 namespace App\Clients\GitHubClient\Responses\ValueObjects;
 
-use App\Clients\GitHubClient\Enums\UserTypeEnum;
 use Illuminate\Contracts\Support\Arrayable;
 use InvalidArgumentException;
 
 final readonly class GitHubUserResultValueObject implements Arrayable
 {
-    private int $github_id;
-    private ?string $url;
-    private ?string $htmlUrl;
+    public function __construct(private int $github_id, private ?string $url = null, private ?string $htmlUrl = null)
+    {
+    }
 
     public static function hydrate(array $data): self
     {
-        $instance = new self();
+        $args = [
+            'github_id' => self::getId($data),
+            'url' => $data['url'] ?? null,
+            'htmlUrl' => $data['html_url'] ?? null,
+        ];
 
-        $instance->github_id = self::getId($data);
-        $instance->url = $data['url'] ?? null;
-        $instance->htmlUrl = $data['html_url'] ?? null;
-
-        return $instance;
+        return new self(...$args);
     }
 
+    /**
+     *@return array<string, string>
+     */
     public function toArray(): array
     {
         return [
@@ -39,10 +41,5 @@ final readonly class GitHubUserResultValueObject implements Arrayable
         }
 
         return $data['id'];
-    }
-
-    private static function getType(array $data): ?UserTypeEnum
-    {
-        return UserTypeEnum::tryFrom($data['type'] ?? null);
     }
 }

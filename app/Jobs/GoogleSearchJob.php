@@ -2,47 +2,28 @@
 
 namespace App\Jobs;
 
+use App\Actions\Profile\StoreProfilesLinksAction;
+use App\Clients\GoogleSearchClient\Responses\GoogleSearchResponse;
 use App\Models\Profile;
-use App\Services\GitHubServices;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Queue\Queueable;
+use App\Services\GoogleSearchService;
 
-class GoogleSearchJob implements ShouldQueue
+class GoogleSearchJob extends AbstractProfileJob
 {
-
-    use Queueable;
-
-    /**
-     * Create a new job instance.
-     */
-    public function __construct(private readonly string $profileId)
+    public function handle(): void
     {
+        if (!$this->profile) {
+            return;
+        }
+
+        $response = $this->googleSearch($this->profile);
+        (new StoreProfilesLinksAction())->execute($response->getValueObject(), $this->profile->github_id);
     }
 
-
-    /**
-     * Execute the job.
-     */
-    public function handle(GitHubServices $service): void
+    private function googleSearch(Profile $profile): GoogleSearchResponse
     {
-        $profile = Profile::query()->find($this->profileId);
-        if (!$profile){
-            return;
-        }
+        $keyWords = $profile->name . ' netherlands site:linkedin.com';
+        $service = app(GoogleSearchService::class);
 
-        $userName = $this->getUserName();
-        if (!$userName) {
-            //todo is done
-            return;
-        }
-
-        $data = $service->getProfile($userName);
-        //@todo different google search job?
-        $links = $this->googleLinkedinSearch($data['name']);
-        if ($links) {
-            $data['linkedin_links'] = $links;
-        }
-        $data = array_merge($data, ['is_fetched' => true]);
-        $this->profile->update($data);
+        return $service->search($keyWords);
     }
 }

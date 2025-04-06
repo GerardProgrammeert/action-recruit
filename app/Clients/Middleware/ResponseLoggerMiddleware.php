@@ -47,7 +47,7 @@ class ResponseLoggerMiddleware
 
     private function getDir(): string
     {
-        $host = parse_url($this->gethost(), PHP_URL_HOST);
+        $host = $this->gethost();
         $dirName = Str::replace('.', '-', $host);
 
         if (!Storage::exists($dirName)) {

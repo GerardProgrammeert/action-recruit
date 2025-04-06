@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Clients\GitHubClient;
+namespace App\Clients\GitHubClient\Enums;
 
-Enum Endpoints: string
+enum EndpointsEnum: string
 {
     case SEARCH_USERS = '/search/users';
     case USERS = '/users';

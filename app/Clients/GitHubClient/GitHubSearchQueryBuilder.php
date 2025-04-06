@@ -25,12 +25,7 @@ class GitHubSearchQueryBuilder
             throw new InvalidArgumentException('Invalid operator: ' . $operator);
         }
 
-        if ($operator === '=') {
-            $condition = "$field:$value";
-        }
-        else {
-            $condition = "$field:$operator$value";
-        }
+        $condition = ($operator === '=') ? "$field:$value" : "$field:$operator$value";
         $this->conditions[] = $condition;
 
         return $this;

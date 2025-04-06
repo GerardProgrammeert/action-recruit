@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Clients\ClientInterface;
-use App\Clients\GitHubClient\Endpoints;
-use App\Clients\GitHubClient\Enums\UserTypeEnum;
+use App\Clients\GitHubClient\Enums\EndpointsEnum;
 use App\Clients\GitHubClient\GitHubSearchQueryBuilder;
 use App\Clients\GitHubClient\Responses\GitHubSearchUsersResponse;
+use App\Clients\GitHubClient\Responses\GitHubUserResponse;
 
 class GitHubServices
 {
@@ -18,15 +18,15 @@ class GitHubServices
 
     public function searchUsers(GitHubSearchQueryBuilder $queryBuilder): GitHubSearchUsersResponse
     {
-        $rawResponse = $this->client->get(Endpoints::SEARCH_USERS->value,  $queryBuilder->toArray());
+        $rawResponse = $this->client->get(EndpointsEnum::SEARCH_USERS->value, $queryBuilder->toArray());
 
         return new GitHubSearchUsersResponse($rawResponse);
     }
 
-    public function getProfile(string $user): array
+    public function getProfile(string $user): GitHubUserResponse
     {
-        $response = $this->client->get(Endpoints::USERS->value . '/' . $user, []);
+        $rawResponse = $this->client->get(EndpointsEnum::USERS->value . '/' . $user, []);
 
-        return json_decode($response->getBody()->getContents(), true);
+        return new GitHubUserResponse($rawResponse);
     }
 }

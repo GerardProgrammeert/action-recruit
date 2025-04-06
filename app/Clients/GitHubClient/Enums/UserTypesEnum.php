@@ -2,7 +2,7 @@
 
 namespace App\Clients\GitHubClient\Enums;
 
-enum UserTypeEnum: string
+enum UserTypesEnum: string
 {
     case USER = 'User';
     case ORGANIZATION = 'Organization';

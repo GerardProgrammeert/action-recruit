@@ -3,6 +3,7 @@
 namespace App\Clients;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 
 abstract class AbstractResponse
@@ -27,6 +28,7 @@ abstract class AbstractResponse
     {
         $body = $response->getBody();
         $body->rewind();
+
         return $body->getContents();
     }
 
@@ -35,11 +37,13 @@ abstract class AbstractResponse
         return $response->getStatusCode();
     }
 
-    protected function parseJson(string $json): array
+    protected function parseJson(?string $json): array
     {
-        if ($json === '' || $json === null) {
+        if ($json === '' || $json === null || !Str::isJson($json)) {
             return [];
         }
+        //todo use Str::
+
 
         try {
             $data = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
@@ -49,15 +53,14 @@ abstract class AbstractResponse
             }
 
             return $data;
-
         } catch (\JsonException $e) {
             throw new ErrorResponseException('Failed to decode JSON: ' . $e->getMessage());
         }
     }
 
-    public function hasItems(): bool
+    public function isIncomplete(): bool
     {
-        if (Arr::get($this->data, 'items') && count(Arr::get($this->data, 'items')) > 0) {
+        if (Arr::get($this->data, 'incomplete_results')) {
             return true;
         }
 

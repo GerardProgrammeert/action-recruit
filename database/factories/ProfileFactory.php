@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ProfileFactory extends Factory
 {
-
     /**
      *@return array<string, mixed>
      */
@@ -19,7 +18,7 @@ class ProfileFactory extends Factory
         $username = $this->faker->userName;
 
         return [
-            'github_id' => time() .mt_rand(1, 1000000),
+            'github_id' => time() . mt_rand(1, 1000000),
             'url' => "https://api.github.com/users/{$username}",
             'html_url' => "https://github.com/{$username}",
             'location' => $this->faker->city,

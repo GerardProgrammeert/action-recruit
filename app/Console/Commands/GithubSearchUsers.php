@@ -3,16 +3,17 @@
 namespace App\Console\Commands;
 
 use App\Actions\Profile\StoreProfilesAction;
-use App\Clients\GitHubClient\Enums\UserTypeEnum;
+use App\Clients\GitHubClient\Enums\UserTypesEnum;
 use App\Clients\GitHubClient\GitHubSearchQueryBuilder;
 use App\Clients\GitHubClient\Responses\Collections\GitHubUserResultCollection;
 use App\Services\GitHubServices;
 use Illuminate\Console\Command;
+
 use function Laravel\Prompts\text;
 
-class GithubSearchProfiles extends Command
+class GithubSearchUsers extends Command
 {
-    protected $signature = 'github:search {keywords? : The keywords to search for on GitHub}';
+    protected $signature = 'github:search-users {keywords? : The keywords to search for on GitHub}';
 
     protected $description = 'Search GitHub for user profiles matching the provided keywords.';
 
@@ -46,12 +47,11 @@ class GithubSearchProfiles extends Command
                 $items = $response->getCollection();
                 $collection = $collection->merge($items);
                 $page++;
-            }
-            catch (\Exception $e) {
+            } catch (\Exception $e) {
                 $this->error("Error occurred while fetching page $page: " . $e->getMessage());
                 break;
             }
-        } while ($response->hasItems());
+        } while (!$response->isInComplete());
 
         return $collection;
     }
@@ -77,9 +77,9 @@ class GithubSearchProfiles extends Command
         $queryBuilder->setKeywords($keywords);
         $queryBuilder->setOffset($offset);
         $queryBuilder
-            ->where('type', '=', UserTypeEnum::USER->value)
+            ->where('type', '=', UserTypesEnum::USER->value)
             ->where('location', '=', 'Netherlands')
-            ->where('repos', '>' , 10);
+            ->where('repos', '>', 10);
 
         return $queryBuilder;
     }

@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
-use App\Clients\GitHubClient\Enums\UserTypeEnum;
+use App\Clients\GitHubClient\Enums\UserTypesEnum;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @mixin Builder
+ * @method static Builder isFetched()
+ */
 class Profile extends Model
 {
     /** @use HasFactory<\Database\Factories\ProfileFactory> */
@@ -38,9 +43,19 @@ class Profile extends Model
         return [
             'github_id' => 'integer',
             'linkedin_links' => 'array',
-            'type' => UserTypeEnum::class,
+            'type' => UserTypesEnum::class,
             'is_done' => 'boolean',
             'is_fetched' => 'boolean',
         ];
+    }
+
+    public function scopeIsNotFetched(Builder $query,)
+    {
+        return $query->where('is_fetched', false);
+    }
+
+    public function scopeWhereGitHubId(Builder $query, $value)
+    {
+        return $query->where('github_id', '=', $value);
     }
 }

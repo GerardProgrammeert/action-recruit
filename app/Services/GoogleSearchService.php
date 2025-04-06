@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Clients\ClientInterface;
+use App\Clients\GoogleSearchClient\Enums\EndpointEnum;
+use App\Clients\GoogleSearchClient\Responses\GoogleSearchResponse;
 
 class GoogleSearchService
 {
@@ -12,11 +14,12 @@ class GoogleSearchService
     {
     }
 
-    public function search(string $keywords): array
+    public function search(string $keywords): GoogleSearchResponse
     {
         $params = ['query' => ['q' => $keywords]];
-        $response = $this->client->get('/customsearch/v1', $params);
 
-        return json_decode($response->getBody()->getContents(), true); //@todo move to client ??
+        $rawResponse = $this->client->get(EndpointEnum::CUSTOM_SEARCH->value, $params);
+
+        return new GoogleSearchResponse($rawResponse);
     }
 }

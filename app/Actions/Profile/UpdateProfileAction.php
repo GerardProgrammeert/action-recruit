@@ -2,14 +2,24 @@
 
 namespace App\Actions\Profile;
 
-use App\Actions\ActionInterface;
-use App\Clients\GitHubClient\Responses\ValueObjects\GitHubUserResultValueObject;
+use App\Clients\GitHubClient\Responses\ValueObjects\GitHubUserValueObject;
 use App\Models\Profile;
 
-class UpdateProfileAction implements ActionInterface
+class UpdateProfileAction
 {
-    public function execute(GitHubUserResultValueObject $profile): void
+    public function execute(GitHubUserValueObject $gitHubUserValueObject, ?bool $isFetch = null): void
     {
-        Profile::query()->update($profile->toArray());
+        $profile = Profile::query()->where('github_id', $gitHubUserValueObject->getGitHubId());
+
+        if (!$profile) {
+            return;
+        }
+
+        $data = $gitHubUserValueObject->toArray();
+        if (!is_null($isFetch)) {
+            $data['is_fetched'] = $isFetch;
+        }
+
+        $profile->update($data);
     }
 }
