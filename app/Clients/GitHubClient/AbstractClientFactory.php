@@ -11,8 +11,8 @@ use GuzzleHttp\HandlerStack;
 abstract class AbstractClientFactory implements ClientFactoryInterface
 {
     public function __construct(
-        private string $baseUrl,
-        private string $apiKey,
+        protected string $baseUrl = 'asd',
+        protected string $apiKey,
         protected string $cacheKey,
     ) {
     }

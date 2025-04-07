@@ -1,4 +1,4 @@
-project = action-recruit# change this for your project name
+project=$(shell basename $(shell pwd))
 
 in:
 	docker exec --user=php -it "$(project)-php-fpm-1" /bin/sh
@@ -17,10 +17,12 @@ rebuild:
 tail:
 	@docker compose logs --follow
 
-install-laravel:
-	composer create-project --prefer-dist laravel/laravel:^11.0
-	mv laravel/* laravel/.* .
-	rm -d laravel
+install:
+	@cp .env.example .env
+	@cp .env.testing.example .env.testing
+	@php artisan key:generate
+	@composer install
+	@chmod o+w ./storage/ -R
 
 laravel-chmod:
 	@chmod o+w ./storage/ -R
