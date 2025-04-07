@@ -3,6 +3,8 @@
 namespace Middleware;
 
 use App\Services\GoogleSearchService;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Cache;
 use PHPUnit\Framework\Attributes\Test;
 use RuntimeException;
 use Tests\Feature\FeatureTestCase;

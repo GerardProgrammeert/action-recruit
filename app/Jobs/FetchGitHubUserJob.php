@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Actions\Profile\UpdateProfileAction;
+use App\Enums\ProfileStatusEnum;
 use App\Services\GitHubServices;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -22,7 +23,7 @@ class FetchGitHubUserJob extends AbstractProfileJob
 
         $response = $service->getProfile($userName);
         $GitHubUserValueObject = $response->getValueObject();
-        (new UpdateProfileAction())->execute($GitHubUserValueObject, true);
+        (new UpdateProfileAction())->execute($GitHubUserValueObject, ProfileStatusEnum::GITHUB_ENRICHED);
 
         if ($GitHubUserValueObject->getName()) {
             GoogleSearchJob::dispatch($GitHubUserValueObject->getGithubId());

@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Actions\Profile\StoreProfilesLinksAction;
 use App\Clients\GoogleSearchClient\Responses\GoogleSearchResponse;
+use App\Enums\ProfileStatusEnum;
 use App\Models\Profile;
 use App\Services\GoogleSearchService;
 
@@ -17,7 +18,8 @@ class GoogleSearchJob extends AbstractProfileJob
         $this->start($this->profile->github_id);
 
         $response = $this->googleSearch($this->profile);
-        (new StoreProfilesLinksAction())->execute($response->getValueObject(), $this->profile->github_id);
+        (new StoreProfilesLinksAction())
+            ->execute($response->getValueObject(), $this->profile->github_id, ProfileStatusEnum::GOOGLE_ENRICHED);
 
         $this->finish($this->profile->github_id);
     }
