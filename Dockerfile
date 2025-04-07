@@ -32,3 +32,4 @@ RUN composer install --optimize-autoloader
 USER root
 RUN cp .env.example .env
 RUN php artisan key:generate
+RUN chmod -Rf 0777 storage
