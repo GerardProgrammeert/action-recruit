@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Commands;
 
+use App\Enums\ProfileStatusEnum;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\Feature\Fixtures\FakeClients\AbstractFakeClient;
 
@@ -43,7 +44,7 @@ class GithubSearchUsersCommandTest extends CommandTest
             'email' => null,
             'twitter_username' => null,
             'blog' => null,
-            'is_fetched' => 0,
+            'status' => ProfileStatusEnum::UNPROCESSED->value,
             'linkedin_links' => null,
         ];
     }

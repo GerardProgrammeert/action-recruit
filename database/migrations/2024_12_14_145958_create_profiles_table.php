@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('github_id')->unique('github_id');
+            $table->enum('status', ['unprocessed','github_enriched','google_enriched'])
+                ->default('unprocessed');
             $table->text('url')->nullable();
             $table->text('html_url')->nullable();
             $table->text('location')->nullable();

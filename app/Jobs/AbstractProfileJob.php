@@ -17,7 +17,7 @@ abstract class AbstractProfileJob implements ShouldQueue, ShouldBeUnique
 
     public function __construct(private readonly int $GithubId)
     {
-        $this->profile = Profile::query()->where('github_id', '=', $GithubId)->first();
+        $this->profile = Profile::query()->GitHubId($GithubId)->first();
         $this->className = class_basename($this);
     }
 

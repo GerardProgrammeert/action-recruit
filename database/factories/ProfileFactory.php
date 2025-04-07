@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\ProfileStatusEnum;
 use App\Models\Profile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -28,7 +29,7 @@ class ProfileFactory extends Factory
             'twitter_username' => $this->faker->userName,
             'blog' => $this->faker->url,
             'linkedin_links' => json_encode($this->generateLinkedInProfiles()),
-            'is_fetched' => $this->faker->boolean(),
+            'status' => $this->faker->boolean(),
         ];
     }
 
@@ -43,7 +44,7 @@ class ProfileFactory extends Factory
                 'twitter_username' => null,
                 'blog' => null,
                 'linkedin_links' => null,
-                'is_fetched' => false,
+                'status' => ProfileStatusEnum::UNPROCESSED,
             ];
         });
     }
@@ -52,6 +53,7 @@ class ProfileFactory extends Factory
     {
         return $this->state(function () {
             return [
+                'status' => ProfileStatusEnum::GITHUB_ENRICHED,
                 'linkedin_links' => null,
             ];
         });

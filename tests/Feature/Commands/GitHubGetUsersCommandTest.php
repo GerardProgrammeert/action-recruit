@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Commands;
 
+use App\Enums\ProfileStatusEnum;
 use App\Jobs\FetchGitHubUserJob;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Queue;
@@ -16,7 +17,7 @@ class GitHubGetUsersCommandTest extends CommandTest
     {
         Queue::fake();
 
-        Profile::factory()->count(500)->create(['is_fetched' => false]);
+        Profile::factory()->count(500)->create(['status' => ProfileStatusEnum::UNPROCESSED->value]);
 
         $this->getCommand()
             ->assertSuccessful()

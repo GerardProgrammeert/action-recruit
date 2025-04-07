@@ -4,7 +4,6 @@ namespace Jobs;
 
 use App\Jobs\GoogleSearchJob;
 use App\Models\Profile;
-use Illuminate\Support\Facades\Queue;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\Feature\FeatureTestCase;
 
@@ -20,16 +19,6 @@ class GoogleSearchJobTest extends FeatureTestCase
         $this->assertEqualsCanonicalizing($this->getData(), $profile->linkedin_links);
     }
 
-    public function it_should_throw_error_exceeding_rate_limiter(): void
-    {
-        $profiles = Profile::factory()->gitHubEnriched()->count(20)->create();
-
-        Queue::fake();
-
-        $profiles->each(function (Profile $profile) {
-            GoogleSearchJob::dispatch($profile->github_id);
-        });
-    }
     /**
      *@return array<int, string>
      */

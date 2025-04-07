@@ -40,7 +40,7 @@ class ExportProfiles extends Command
                     'blog' => $profile->blog,
                     'is_done' => $profile->is_done,
                     'linkedin_links' => $profile->linkedin_links ? implode('|', $profile->linkedin_links) : '' ,
-                    'is_fetched' => $profile->is_fetched,
+                    'status' => $profile->status,
                 ];
             }
         );

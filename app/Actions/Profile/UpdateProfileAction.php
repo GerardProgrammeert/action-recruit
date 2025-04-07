@@ -3,23 +3,21 @@
 namespace App\Actions\Profile;
 
 use App\Clients\GitHubClient\Responses\ValueObjects\GitHubUserValueObject;
+use App\Enums\ProfileStatusEnum;
 use App\Models\Profile;
 
 class UpdateProfileAction
 {
-    public function execute(GitHubUserValueObject $gitHubUserValueObject, ?bool $isFetch = null): void
-    {
-        $profile = Profile::query()->where('github_id', $gitHubUserValueObject->getGitHubId());
+    public function execute(
+        GitHubUserValueObject $gitHubUserValueObject,
+        ProfileStatusEnum $status = ProfileStatusEnum::UNPROCESSED
+    ): void {
+        $profile = Profile::query()->GitHubId($gitHubUserValueObject->getGitHubId())->first();
 
         if (!$profile) {
             return;
         }
 
-        $data = $gitHubUserValueObject->toArray();
-        if (!is_null($isFetch)) {
-            $data['is_fetched'] = $isFetch;
-        }
-
-        $profile->update($data);
+        $profile->update(array_merge($gitHubUserValueObject->toArray(), ['status' => $status->value]));
     }
 }

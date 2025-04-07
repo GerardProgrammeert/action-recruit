@@ -9,7 +9,7 @@ class StoreProfilesLinksAction
 {
     public function execute(GoogleSearchResultValueObject $valueObject, int $GitHubId): void
     {
-        $profile = Profile::query()->whereGitHubId($GitHubId)->first();
+        $profile = Profile::query()->GitHubId($GitHubId)->first();
 
         if ($profile) {
             $profile->update($valueObject->toArray());

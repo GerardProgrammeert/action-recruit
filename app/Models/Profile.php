@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use App\Clients\GitHubClient\Enums\UserTypesEnum;
+use App\Enums\ProfileStatusEnum;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @mixin Builder
- * @method static Builder isFetched()
+ * @method static Builder withStatus()
+ * @method static Builder GitHubId()
  */
 class Profile extends Model
 {
@@ -21,6 +23,7 @@ class Profile extends Model
      */
     protected $fillable = [
         'github_id',
+        'status',
         'type',
         'url',
         'html_url',
@@ -30,8 +33,6 @@ class Profile extends Model
         'email',
         'twitter_username',
         'blog',
-        'is_done',
-        'is_fetched',
         'linkedin_links',
     ];
 
@@ -42,19 +43,18 @@ class Profile extends Model
     {
         return [
             'github_id' => 'integer',
+            'status' => ProfileStatusEnum::class,
             'linkedin_links' => 'array',
             'type' => UserTypesEnum::class,
-            'is_done' => 'boolean',
-            'is_fetched' => 'boolean',
         ];
     }
 
-    public function scopeIsNotFetched(Builder $query,)
+    public function scopeWithStatus(Builder $query, ProfileStatusEnum $status): Builder
     {
-        return $query->where('is_fetched', false);
+        return $query->where('status', $status);
     }
 
-    public function scopeWhereGitHubId(Builder $query, $value)
+    public function scopeGitHubId(Builder $query, string $value)
     {
         return $query->where('github_id', '=', $value);
     }
