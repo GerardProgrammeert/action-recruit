@@ -13,7 +13,6 @@ class GoogleSearchJobTest extends FeatureTestCase
     public function it_should_fetched_and_store_links(): void
     {
         $profile = Profile::factory()->create();
-
         (new GoogleSearchJob($profile->github_id))->handle();
         $profile->refresh();
         $this->assertEqualsCanonicalizing($this->getData(), $profile->linkedin_links);
