@@ -29,7 +29,7 @@ class ProfileFactory extends Factory
             'twitter_username' => $this->faker->userName,
             'blog' => $this->faker->url,
             'linkedin_links' => json_encode($this->generateLinkedInProfiles()),
-            'status' => $this->faker->boolean(),
+            'status' => $this->faker->randomElement(ProfileStatusEnum::cases()),
         ];
     }
 
