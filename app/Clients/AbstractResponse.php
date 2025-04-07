@@ -42,8 +42,6 @@ abstract class AbstractResponse
         if ($json === '' || $json === null || !Str::isJson($json)) {
             return [];
         }
-        //todo use Str::
-
 
         try {
             $data = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
@@ -60,11 +58,15 @@ abstract class AbstractResponse
 
     public function isIncomplete(): bool
     {
-        if (Arr::get($this->data, 'incomplete_results')) {
-            return true;
+        if ($this->data['items'] ?? false){
+            return false;
         }
 
-        return false;
+        if (count($this->data['items']) === 0){
+            return false;
+        }
+
+        return true;
     }
 
     protected function parseErrorMessage(array $data): string

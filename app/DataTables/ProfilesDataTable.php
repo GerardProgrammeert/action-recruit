@@ -87,7 +87,7 @@ class ProfilesDataTable extends DataTable
                     //->dom('Bfrtip')
                     //->orderBy(1)
                     ->selectStyleSingle()
-            ->parameters([
+                    ->parameters([
                              'dom' => 'Bfrtip',
                              'buttons' => ['reload', 'csv'],
                          ]);
