@@ -28,8 +28,9 @@ USER php
 WORKDIR /var/www/html
 COPY . /var/www/html
 
-RUN composer install --optimize-autoloader
+
 USER root
-RUN cp .env.example .env
-RUN php artisan key:generate
+#RUN cp .env.example .env
+##RUN php artisan key:generate
+RUN composer install --optimize-autoloader
 RUN chmod -Rf 0777 storage
