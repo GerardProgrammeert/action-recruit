@@ -7,25 +7,28 @@ in-root:
 	docker exec --user=root -it "$(project)-php-fpm-1" /bin/sh
 
 up:
-	docker-compose up -d
+	@docker-compose up -d
 
 down:
-	docker-compose down
+	@docker-compose down
+
+build:
+	@docker-compose build
+	@docker-compose up -d
 
 rebuild:
-	docker-compose down
-	docker-compose build
-	docker-compose up -d
+	@docker-compose down
+	@docker-compose build
+	@docker-compose up -d
 
 tail:
 	@docker compose logs --follow
 
 install:
-	mkdir -p vendor
 	@cp .env.example .env
 	@cp .env.testing.example .env.testing
-	@php artisan key:generate
 	@composer install
+	@php artisan key:generate
 	@chown -R www-data:www-data /var/www/html/public
 	@chmod o+w ./storage/ -R
 
